@@ -1,5 +1,12 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: aRFQTI+I1mVnNemIS4RGIpWcF1logqzzHZlWIB/dmgyLL/X4foNRkpC7ZKf/Q/vSFOaakSD4h0mcCR4TrtglGlDEntELXEhqkNYY/gpYYWCgwaIU7Y+5f9Rgzd64Otfor6DpYjNNakUs6LvSK4VKKaVpQtt4zmrGy7AgJe/hq+XGZQH8bE5ApUG4MXBVKkLdYymVxeOalBiBt5PnOzYdoPfyeNELTALKq+9yhVGe3b3g6ZKRrQENmhMBiCTiTwu8XkBfoEMuCZL7golT1mMV3SAQTy16Ciw4QyWNjzK8C1Q2bDv4cC0F0KdQ5njr4yVl8FIe/F4pb5kO8neaUyFbOicuVrx30sZhiocV6iS7KUpq3h907HA2c0fZeb+aVpoVsU5UMVbEh1AfvREOxIwpDJtIDajvVXd1u62RzRWWu+CezhYFB19QsEk1m3Mt4b/NkwybvPH7sqEL8/Imfny5JBCdoi7YBECY2MKw+eCXKB4Z5G6Im9DgCYbMxd+WeWoYI12jjXR80V3s34xQkBGHRc902IpoF1VhHOgKW+EM7vew5SllmRijHI5WJ9VXPBT0NDbBuJHPgC9SMwdjbo7EPb24ajjxiqBvRwDU/dvW70SnF2tp5iJpmC1+hmymcnXk3p5FRDLTXkC6IJ7Q3/pzqPIPIfugGYkydJgenqIk5YI=
+  app: warp-zone
+  on:
+    repo: avanichyanukroh/warp-zone
