@@ -1,16 +1,18 @@
 import React from 'react';
+import '../App.css';
+import './footer.css';
 
 export default function Footer(props) {
 
 	return (
-		<footer>
-			<div>
+		<footer className="row">
+			<div className="col-4">
 				Contacts info, Links, navigation/directory
 			</div>
-			<div>
+			<div className="col-4">
 				Terms of service
 			</div>
-			<div>
+			<div className="col-4">
 				Feedbacks, follow us on etc.
 			</div>
 		</footer>

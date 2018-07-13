@@ -1,0 +1,25 @@
+nav {
+	z-index: 1;
+}
+
+input {
+	display: inline-block;
+}
+
+ul	{
+	display: inline-block;
+}
+
+li {
+	display: inline-block;
+	text-decoration: none;
+	padding-right: 15px;
+}
+
+.signup-login-container {
+	display: inline-block;
+}
+
+.clear-both {
+	clear: both;
+}
