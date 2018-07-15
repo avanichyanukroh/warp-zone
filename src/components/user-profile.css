@@ -1,0 +1,39 @@
+.user-profile-info-container {
+	background-color: blue;
+	min-height: 240px;
+	max-width: 1025px;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+.user-profile-info-main, .user-profile-info-side {
+	padding-top: 10px;
+
+}
+
+.profile-portrait {
+	height: 200px;
+	width: 200px;
+}
+
+.user-profile-info-wrapper{
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px;
+}
+
+.user-profile-summary {
+	padding-top: 50px;
+}
+
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+.user-profile-container {
+	background-color: skyblue;
+}
+

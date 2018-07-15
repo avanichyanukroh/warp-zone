@@ -2,17 +2,19 @@ import React from 'react';
 import '../App.css';
 import "./landing-page.css";
 
-export default function Main(props) {
+export default function LandingPage(props) {
 
 	return (
+		<div className="row landing-page-container">
 			<section className="col-12">
-			Featured & recommended
+				Featured & recommended
 			</section>
 			<section className="col-12">
-			New releases
+				New releases
 			</section>
 			<section className="col-12">
-			On sale
+				On sale
 			</section>
+		</div>
 		);
 }

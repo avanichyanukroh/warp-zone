@@ -16,9 +16,8 @@
  **/
 .row {
 	max-width: 1000px;
-	/*padding-left: 20px;
-	padding-right: 20px;*/
-	margin: 0 auto 25px;
+	padding: 10px;
+	margin: 0 auto 0;
 }
 
 /* Clearfix */
@@ -85,8 +84,10 @@
 }
 
 .App-header {
-	background-color: #aaa;
-	border: 1px solid black;
-	height: 50px;
-	width: 100%;
+	background-color: darkgray;
+}
+
+main {
+	background-color: lightblue;
+	min-height: 1000px;
 }
