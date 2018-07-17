@@ -1,11 +1,11 @@
 import React from 'react';
-import '../App.css';
-import "./landing-page.css";
+import '../../float-grid.css';
+import "./home.css";
 
-export default function LandingPage(props) {
+export default function Home(props) {
 
 	return (
-		<div className="row landing-page-container">
+		<div className="row home-container">
 			<section className="col-12">
 				Featured & recommended
 			</section>

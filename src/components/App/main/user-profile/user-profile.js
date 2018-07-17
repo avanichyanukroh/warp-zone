@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../../float-grid.css';
 import "./user-profile.css";
 
 export default function UserProfile(props) {

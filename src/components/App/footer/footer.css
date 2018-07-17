@@ -1,0 +1,15 @@
+footer {
+	background-color: #aaa;
+}
+
+.footer-container {
+	vertical-align: bottom;
+	height: 100px;
+	background-color: #aaa;
+	text-align: center;
+}
+
+.footer-section {
+	border: 1px solid black;
+	padding: 5px;
+}

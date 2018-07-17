@@ -16,7 +16,6 @@
  **/
 .row {
 	max-width: 1000px;
-	padding: 10px;
 	margin: 0 auto 0;
 }
 
@@ -81,13 +80,4 @@
 	.col-12 {
     	width: 100%;
 	}
-}
-
-.App-header {
-	background-color: darkgray;
-}
-
-main {
-	background-color: lightblue;
-	min-height: 1000px;
 }

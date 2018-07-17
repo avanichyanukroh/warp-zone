@@ -1,0 +1,15 @@
+.about-section-container {
+	padding: 5px;
+	margin-top: 350px;
+	height: 230px;	
+	overflow: hidden;
+}
+
+.about-info {
+	padding-top: 5px;
+	font-weight: bold;
+}
+
+.about-summary {
+	margin-top: 10px;
+}

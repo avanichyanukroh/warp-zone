@@ -1,0 +1,9 @@
+.video-player-container {
+	text-align: center;
+}
+
+.video-player {
+	height: 360px;
+	z-index: 3;
+	border: none;
+}
