@@ -1,0 +1,59 @@
+.grid-separator-container {
+	padding: 5px;
+}
+
+.side-preview-section-container {
+	padding: 5px;
+	height: 600px;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.game-cover {
+	height: auto;
+}
+.side-preview-section-info-container {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.warp-icon-player-rating {
+	color: white;
+	margin-right: 15px;
+	text-shadow: 5px 5px 10px black;
+	z-index: 2;
+}
+
+.warp-icon-critic-rating {
+	color: white;
+	text-shadow: 5px 5px 10px black;
+	z-index: 2;
+}
+
+.side-preview-section-info-date, 
+.side-preview-section-info-developer {
+	text-align: center;
+	color: white;
+	padding-top: 10px;
+}
+
+.side-preview-section-info-developer {
+	font-style: italic;
+}
+
+.side-preview-section-rating-display-container {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.side-preview-section-rating-display-container {
+	text-align: center;
+}
+
+.side-preview-section-rating-info {
+	display: inline-block;
+	text-align: center;
+	height: 40px;
+	width: 156px;
+	margin-top: 20px;
+	color: white;
+}
