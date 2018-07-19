@@ -119,3 +119,15 @@ h1, h2, h3 {
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+.main-content-2,
+.side-content-2 {
+	padding: 5px;
+}
+
+.main-content-section-container,
+.side-content-section-container {
+	padding: 5px;
+	height: 600px;
+	background-color: rgba(0, 0, 0, 0.3);
+}

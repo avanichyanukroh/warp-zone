@@ -13,9 +13,9 @@ export class VideoPlayer extends React.Component {
 			<div className="video-player-container">
 				<iframe 
 					className="col-12 video-player"
-					allowfullscreen="allowfullscreen"
+					allowFullScreen="allowfullscreen"
 					src="https://www.youtube.com/embed/qy8jmm9kY4A?autoplay=1"
-					autofocus>
+					autoFocus>
 				</iframe>
 			</div>
 		)
