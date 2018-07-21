@@ -11,6 +11,7 @@
 .game-cover {
 	height: auto;
 }
+
 .side-preview-section-info-container {
 	text-align: center;
 	margin-bottom: 10px;
@@ -30,17 +31,27 @@
 }
 
 .side-preview-section-info-date, 
-.side-preview-section-info-developer {
+.side-preview-section-info-text {
 	text-align: center;
 	color: white;
 	padding-top: 10px;
 }
 
-.side-preview-section-info-developer {
+.side-preview-section-info-text {
 	font-style: italic;
 }
 
-.side-preview-section-rating-display-container {
+.side-preview-section-ratings-display-container {
+	text-align: center;
+	height: 146px;
+	overflow: auto;
+}
+
+.side-preview-section-player-rating-display-container,
+.side-preview-section-critic-rating-display-container {
+	display: inline-block;
+	width: 148px;
+	height: 130px;
 	padding-top: 20px;
 	text-align: center;
 }

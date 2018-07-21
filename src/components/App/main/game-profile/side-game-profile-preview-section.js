@@ -31,8 +31,8 @@ export class SideGameProfilePreviewSection extends React.Component {
 
 				 criticRatingRounded = Math.round(criticRating);
 			}
-
 		};
+
 		ratingRounded(gameProfile.rating, gameProfile.aggregated_rating);
 
 		return(
@@ -43,16 +43,18 @@ export class SideGameProfilePreviewSection extends React.Component {
 						src={"//images.igdb.com/igdb/image/upload/t_cover_big/" + gameProfile.cover.cloudinary_id + ".jpg"} />
 					<div className="side-preview-section-info-container">
 						<h2 className="side-preview-section-info-date">{releaseDateDisplay}</h2>
-						<h3 className="side-preview-section-info-developer">Developers: {gameProfile.developers}</h3>
+						<h3 className="side-preview-section-info-text">Developers: {gameProfile.developers}</h3>
+						<h3 className="side-preview-section-info-text">Publishers: {gameProfile.publishers}</h3>
 					</div>
-
-					<div className="side-preview-section-rating-display-container">
-						<i className="warp-icon-player-rating fab fa-sith fa-3x"> {playerRatingRounded}%</i>
-						<i className="warp-icon-critic-rating fab fa-sith fa-2x"> {criticRatingRounded}%</i>
-					</div>
-					<div className="side-preview-section-rating-info-container">
-						<div className="side-preview-section-rating-info">Based on {gameProfile.rating_count} IGDB member ratings</div>
-						<div className="side-preview-section-rating-info">Based on {gameProfile.aggregated_rating_count} IGDB critics rating</div>
+					<div className="side-preview-section-ratings-display-container">
+						<div className="side-preview-section-player-rating-display-container">
+							<i className="warp-icon-player-rating fab fa-sith fa-2x"> {playerRatingRounded}%</i>
+							<div className="side-preview-section-rating-info">Based on {gameProfile.rating_count} IGDB member ratings</div>
+						</div>
+						<div className="side-preview-section-critic-rating-display-container">
+							<i className="warp-icon-critic-rating fab fa-sith fa-2x"> {criticRatingRounded}%</i>
+							<div className="side-preview-section-rating-info">Based on {gameProfile.aggregated_rating_count} IGDB critics rating</div>
+						</div>
 					</div>
 				</div>
 			</div>

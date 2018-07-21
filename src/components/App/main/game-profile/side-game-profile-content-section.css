@@ -4,6 +4,6 @@
 
 .side-content-section-container {
 	padding: 5px;
-	height: 600px;
 	background-color: rgba(0, 0, 0, 0.3);
+	word-break: break-all;
 }

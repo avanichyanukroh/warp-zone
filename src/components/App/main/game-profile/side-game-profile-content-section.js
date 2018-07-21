@@ -20,27 +20,50 @@ export class SideGameProfilePreviewSection extends React.Component {
 		
 		return(
 			<div className="col-4 side-content-2">
+				<div className="grid-separator-container">
 				<div className="side-content-section-container">
-				<h3>Information</h3>
-				<p className="developers-section">Developers: {developersList}</p>
-				<p>Publishers: {publishersList}</p>
-				<p>Game Engines: {gameEnginesList}</p>
-				<p>Game category: {gameProfile.category}</p>
-				<p>Player perspective: {playerPerspectivesList}</p>
-				<h3>Time to beat</h3>
-				<p>Time to beat hastly: {gameProfile.time_to_beat.hastly}</p>
-				<p>Time to beat normally: {gameProfile.time_to_beat.normally}</p>
-				<p>Time to beat completely: {gameProfile.time_to_beat.completely}</p>
-				<p>Game modes: {gameModesList}</p>
-				<p>Themes: {themesList}</p>
-				<h3>Release dates</h3>
-				<p>{releaseDatesList}</p>
-				<h3>Alternative names</h3>
-				<p>{alternativeNamesList}</p>
-				<p>{gameProfile.esrb.rating}</p>
-				<p>{gameProfile.pegi.rating}</p>
-				<h3>Websites</h3>
-				<p>{websitesList}</p>
+					<h3>Information</h3>
+					<p>Title: {gameProfile.name}</p>
+					<p>Developers: {developersList}</p>
+					<p>Publishers: {publishersList}</p>
+					<p>Game Engines: {gameEnginesList}</p>
+					<p>Game category: {gameProfile.category}</p>
+					<p>Player perspective: {playerPerspectivesList}</p>
+				</div>
+				</div>
+				<div className="grid-separator-container">
+				<div className="side-content-section-container">
+					<h3>Time to beat</h3>
+					<p>Hastly: {gameProfile.time_to_beat.hastly}</p>
+					<p>Beat normally: {gameProfile.time_to_beat.normally}</p>
+					<p>Completely: {gameProfile.time_to_beat.completely}</p>
+				</div>
+				</div>
+				<div className="grid-separator-container">
+				<div className="side-content-section-container">
+					<p>Game Modes: {gameModesList}</p>
+					<p>Themes: {themesList}</p>
+				</div>
+				</div>
+				<div className="grid-separator-container">
+				<div className="side-content-section-container">
+					<h3>Release Dates</h3>
+					<p>{releaseDatesList}</p>
+				</div>
+				</div>
+				<div className="grid-separator-container">
+				<div className="side-content-section-container">
+					<h3>Alternative names</h3>
+					<p>{alternativeNamesList}</p>
+					<p>{gameProfile.esrb.rating}</p>
+					<p>{gameProfile.pegi.rating}</p>
+				</div>
+				</div>
+				<div className="grid-separator-container">
+				<div className="side-content-section-container">
+					<h3>Websites</h3>
+					<p>{websitesList}</p>
+				</div>
 				</div>
 			</div>
 		)
