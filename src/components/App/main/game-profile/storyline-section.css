@@ -1,10 +1,5 @@
-.grid-separator-container {
-	padding: 5px;
-}
-
 .main-content-section-container {
 	padding: 5px;
-	height: 600px;
 	background-color: rgba(0, 0, 0, 0.3);
 	overflow: auto;
 }

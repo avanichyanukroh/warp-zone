@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import '../../float-grid.css';
-import './main-game-profile-preview-section.css';
+import './game-profile-main-preview-section.css';
 import VideoPlayer from './video-player';
 import AboutSection from './about-section';
 
-export class MainGameProfilePreviewSection extends React.Component {
+export class GameProfileMainPreviewSection extends React.Component {
 	render() {
 
 		return(
@@ -23,4 +23,4 @@ const mapStateToProps = state => ({
 	gameProfile: state.gameProfile
 })
 
-export default connect(mapStateToProps)(MainGameProfilePreviewSection);
+export default connect(mapStateToProps)(GameProfileMainPreviewSection);

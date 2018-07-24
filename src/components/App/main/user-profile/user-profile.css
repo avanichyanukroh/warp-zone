@@ -1,39 +1,19 @@
+.user-profile-container {
+	background-color: #003F63;
+	min-height: 1000px;
+}
+
 .user-profile-info-container {
-	background-color: blue;
-	min-height: 240px;
+	background: radial-gradient(farthest-side at 50% -1000px, #d4eefc 1%, #006EAD 100%);
+	padding: 20px;
 	max-width: 1025px;
 	margin: 0 auto;
 	z-index: 1;
+	border: 1px black solid;
+	box-shadow: 3px 3px 20px black;
 }
 
-.user-profile-info-main, .user-profile-info-side {
-	padding-top: 10px;
+.user-profile-content-container {
 
-}
-
-.profile-portrait {
-	height: 200px;
-	width: 200px;
-}
-
-.user-profile-info-wrapper{
-	display: inline-block;
-	vertical-align: top;
-	padding: 20px;
-}
-
-.user-profile-summary {
-	padding-top: 50px;
-}
-
-h2 {
-	margin: 0;
-}
-
-p {
-	margin: 0;
-}
-.user-profile-container {
-	background-color: skyblue;
 }
 

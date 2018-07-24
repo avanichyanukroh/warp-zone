@@ -1,0 +1,26 @@
+.user-profile-main-info-section-container {
+
+}
+
+.profile-portrait {
+	height: 200px;
+	width: 200px;
+}
+
+.user-profile-main-info-section-wrapper {
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px;
+}
+
+.user-profile-main-info-summary {
+	padding-top: 50px;
+}
+
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}

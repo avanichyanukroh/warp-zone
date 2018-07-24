@@ -1,15 +1,13 @@
-footer {
-	background-color: #aaa;
-}
-
 .footer-container {
 	vertical-align: bottom;
-	height: 100px;
-	background-color: #aaa;
+	padding: 10px;
+	background-color: #001F30;
+	border: 1px black solid;
+	box-shadow: 5px 5px 25px black;
+	z-index: 3;
 	text-align: center;
 }
 
 .footer-section {
-	border: 1px solid black;
 	padding: 5px;
 }

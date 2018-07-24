@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import '../../float-grid.css';
-import './side-game-profile-preview-section.css';
+import './game-profile-side-preview-section.css';
 
-export class SideGameProfilePreviewSection extends React.Component {
+export class GameProfileSidePreviewSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
 		const releaseDate = new Date(gameProfile.first_release_date);
@@ -66,4 +66,4 @@ const mapStateToProps = state => ({
 	gameProfile: state.gameProfile
 })
 
-export default connect(mapStateToProps)(SideGameProfilePreviewSection);
+export default connect(mapStateToProps)(GameProfileSidePreviewSection);

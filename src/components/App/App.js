@@ -18,8 +18,8 @@ export class App extends Component {
 					<header className="App-header" role="banner">
 						<NavBar />
 					</header>
-					<main role="main">
-						<Route exact path="/" component={GameProfile} />
+					<main role="main" id="main">
+						<Route exact path="/" component={UserProfile} />
 						<Route exact path="/game-profile" component={GameProfile} />
 						<Route exact path="/user-profile" component={UserProfile} />
 					</main>

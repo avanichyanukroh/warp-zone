@@ -18,8 +18,8 @@ export class AboutSection extends React.Component {
 
 		return(
 			<div className="about-section-container">
-				<p className="about-info">Genre: something, something</p>
-				<p className="about-info">Platform: something, something</p>
+				<p className="about-info">Genre: {gameProfile.genres}</p>
+				<p className="about-info">Platform: {gameProfile.platforms}</p>
 				<p 
 					className="about-summary"
 					id="about-summary">
