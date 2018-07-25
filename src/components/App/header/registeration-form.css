@@ -1,0 +1,23 @@
+.registeration-form-container {
+	background-color: #001F30;
+	width: 350px;
+
+}
+
+.registeration-form-input {
+	display: block;
+	margin: 10px auto;
+	height: 35px;
+	width: 100%;
+	border-radius: 4px;
+}
+
+.form-submit-btn {
+	margin-top: 10px;
+	height: 40px;
+	background-color: #19ABFF;
+	border-style: none;
+	border-radius: 4px;
+	box-shadow: 2px 2px 8px black;
+	width: 100%
+}

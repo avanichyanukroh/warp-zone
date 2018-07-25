@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
 import './sign-up-and-login-modal.css';
+import RegisterationForm from './registeration-form';
 
 // ReactModal.setAppElement('#main');
 
@@ -36,7 +37,9 @@ export default class SignUpAndLogInModal extends React.Component {
   }
   
   render () {
+
 	return (
+
 	  <div>
 		<button onClick={this.handleOpenModal} className="signup-login-btn">Sign up</button>
 		<button onClick={this.handleOpenModal2} className="signup-login-btn">Log in</button>
@@ -45,9 +48,8 @@ export default class SignUpAndLogInModal extends React.Component {
 			overlayClassName="overlay-modal"
 			isOpen={this.state.showModal}
 			contentLabel="Sign up"
-			onRequestClose={this.handleCloseModal}
-		>
-		  <p>Modal text!</p>
+			onRequestClose={this.handleCloseModal}>
+		  <RegisterationForm />
 		  <button onClick={this.handleCloseModal} className="signup-login-btn">Close Modal</button>
 		</ReactModal>
 		<ReactModal 
@@ -55,8 +57,7 @@ export default class SignUpAndLogInModal extends React.Component {
 			overlayClassName="overlay-modal"
 			isOpen={this.state.showModal2}
 			contentLabel="Log in"
-			onRequestClose={this.handleCloseModal2}
-		>
+			onRequestClose={this.handleCloseModal2}>
 		  <p>Modal #2 text!</p>
 		  <button onClick={this.handleCloseModal2} className="signup-login-btn">Close Modal</button>
 		</ReactModal>

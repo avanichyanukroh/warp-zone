@@ -1,13 +1,14 @@
 .modal {
  max-height: calc(100% - 100px);
   position: fixed;
-    top: 25%;
+    top: 40%;
     left: 50%;
   transform: translate(-50%, -50%);
-	border: 1px solid #ccc;
-	background: #fff;
+	border: 1px solid black;
+	background: #001F30;
 	overflow: auto;
 	border-radius: 4px;
+	box-shadow: 4px 4px 15px black;
 	outline: none;
 	padding: 20px;
 }

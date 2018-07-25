@@ -5,10 +5,7 @@
 	z-index: 3;
 }
 
-main {
-	background-color: white;
-}
-
-h1, h2, h3 {
+h1, h2, h3, label, p, li, button {
 	margin: 0;
+	color: white;
 }
