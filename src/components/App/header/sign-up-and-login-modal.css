@@ -30,3 +30,11 @@
 	margin-left: 10px;
 	box-shadow: 2px 2px 8px black;
 }
+
+.close-modal-wrapper {
+	text-align: right;
+}
+
+.fa-times {
+	color: white;
+}

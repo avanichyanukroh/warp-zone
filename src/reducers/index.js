@@ -3,11 +3,11 @@ import * as actions from '../actions';
 const initialState = {
     priceList: {
             "asin": "B00WTI3JPE",
-            "console_name": "Playstation 4",
+            "console-name": "Playstation 4",
             "id": "35753",
-            "loose_price": 1300,
-            "new_price": 1809,
-            "product_name": "Witcher 3: Wild Hunt"
+            "loose-price": 1300,
+            "new-price": 1809,
+            "product-name": "Witcher 3: Wild Hunt"
         },
 	gameProfile: {
         "id": 22439,

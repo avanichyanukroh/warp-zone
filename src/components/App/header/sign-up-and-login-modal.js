@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
 import './sign-up-and-login-modal.css';
 import RegisterationForm from './registeration-form';
-
+import LoginForm from './login-form';
 // ReactModal.setAppElement('#main');
 
 export default class SignUpAndLogInModal extends React.Component {
@@ -49,8 +49,10 @@ export default class SignUpAndLogInModal extends React.Component {
 			isOpen={this.state.showModal}
 			contentLabel="Sign up"
 			onRequestClose={this.handleCloseModal}>
-		  <RegisterationForm />
-		  <button onClick={this.handleCloseModal} className="signup-login-btn">Close Modal</button>
+			<div className="close-modal-wrapper">
+				<i className="fas fa-times fa-lg" onClick={this.handleCloseModal}></i>
+			</div>
+			<RegisterationForm />
 		</ReactModal>
 		<ReactModal 
 			className="modal"
@@ -58,8 +60,10 @@ export default class SignUpAndLogInModal extends React.Component {
 			isOpen={this.state.showModal2}
 			contentLabel="Log in"
 			onRequestClose={this.handleCloseModal2}>
-		  <p>Modal #2 text!</p>
-		  <button onClick={this.handleCloseModal2} className="signup-login-btn">Close Modal</button>
+			<div className="close-modal-wrapper">
+		 		<i className="fas fa-times fa-lg" onClick={this.handleCloseModal2}></i>
+		 	</div>
+		 	<LoginForm />
 		</ReactModal>
 	  </div>
 	);

@@ -1,14 +1,14 @@
-.registeration-form-container {
+.login-form-container {
 	background-color: #001F30;
 	width: 350px;
 
 }
 
-.registeration-form-title {
+.login-form-title {
 	text-align: center;
 }
 
-.registeration-form-input {
+.login-form-input {
 	display: block;
 	margin: 10px auto;
 	height: 35px;

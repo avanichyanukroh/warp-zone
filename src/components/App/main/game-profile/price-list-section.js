@@ -7,8 +7,8 @@ export class PriceListSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
 		const priceList = this.props.priceList;
-		const usedPriceToString = priceList.loose_price.toString();
-		const newPriceToString = priceList.new_price.toString();
+		const usedPriceToString = priceList["loose-price"].toString();
+		const newPriceToString = priceList["new-price"].toString();
 		const usedPriceDisplay = "$" + usedPriceToString.slice(0, -2) + "." + usedPriceToString.slice(-2);
 		const newPriceDisplay = "$" + newPriceToString.slice(0, -2) + "." + newPriceToString.slice(-2);
 		const amazonPriceListLink = "https://www.amazon.com/gp/offer-listing/" + priceList.asin;
