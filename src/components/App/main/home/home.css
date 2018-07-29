@@ -1,3 +1,16 @@
 .home-container {
-	background-color: skyblue;
+	background-color: #003F63;
+	min-height: 1000px;
+}
+
+.home-section-container {
+	margin-bottom: 80px;
+}
+.home-greeting-title {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.home-section-title {
+	margin-bottom: 20px;
 }

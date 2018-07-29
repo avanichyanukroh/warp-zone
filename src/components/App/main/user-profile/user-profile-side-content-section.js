@@ -6,8 +6,10 @@ export default function UserProfileSideContentSection(props) {
 
 	return (
 		
-		<div className="col-4 side-content">
-			side content
+		<div className="col-4 user-profile-side-content-section-container">
+			<div className="grid-separator-container">
+				Custom list to display
+			</div>
 		</div>
 		);
 }

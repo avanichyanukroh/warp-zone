@@ -19,7 +19,7 @@ export class App extends Component {
 						<NavBar />
 					</header>
 					<main role="main" id="main">
-						<Route exact path="/" component={UserProfile} />
+						<Route exact path="/" component={GameProfile} />
 						<Route exact path="/game-profile" component={GameProfile} />
 						<Route exact path="/user-profile" component={UserProfile} />
 					</main>

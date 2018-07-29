@@ -48,14 +48,14 @@ export default class RegisterationForm extends React.Component {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(user)
-  				})				
-			  	.then(res => {
-					console.log(res);
-					alert("Registeration complete");
-				})
-				.catch(err => {
-					console.log(err);
-				})
+			})
+		  	.then(res => {
+				console.log(res);
+				alert("Registeration complete");
+			})
+			.catch(err => {
+				console.log(err);
+			})
 		}
 		else {
 			console.log("password not equals");

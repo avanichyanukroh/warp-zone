@@ -1,0 +1,20 @@
+.slider-item-container {
+	display: block;
+	padding: 0 10px;
+	width: 50%;
+	text-align: center;
+}
+
+img {
+	text-align: center;
+	height: auto;
+	width: 100%;
+
+}
+
+.slider-item-info-container {
+	background-color: rgba(0, 0, 0, 0.3);
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
