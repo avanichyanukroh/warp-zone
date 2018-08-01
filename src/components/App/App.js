@@ -21,6 +21,7 @@ export class App extends Component {
 					</header>
 					<main role="main" id="main">
 						<Route exact path="/" component={Home} />
+						<Route exact path="/search-results" component={SearchResults} />
 						<Route exact path="/game-profile" component={GameProfile} />
 						<Route exact path="/user-profile" component={UserProfile} />
 					</main>

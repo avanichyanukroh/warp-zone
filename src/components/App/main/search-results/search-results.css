@@ -1,0 +1,9 @@
+.search-results-container {
+	background-color: #003F63;
+	min-height: 1000px;
+}
+
+.search-results-title {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}

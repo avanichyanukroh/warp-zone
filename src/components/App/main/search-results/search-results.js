@@ -8,10 +8,15 @@ export class SearchResults extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
 
-
 		return(
-			<div>
 
+			<div className="search-results-container">
+				<div className="row">
+				<h2 className="search-results-title"> # of results for ""</h2>
+					<section className="col-12 search-results-section-container">
+					
+					</section>
+				</div>
 			</div>
 		)
 	};

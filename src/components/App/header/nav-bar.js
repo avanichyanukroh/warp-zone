@@ -7,8 +7,8 @@ export default class NavBar extends React.Component {
 	render() {
 
 		function submitSearch(event) {
-			let searchResult;
 			event.preventDefault();
+			let searchResult;
 			const searchTerm = document.getElementById("searchInput").value;
 			const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 			const IGDB_URL = "https://api-endpoint.igdb.com/games/?search=" + searchTerm + "&fields=id,name,url,summary,storyline,collection,rating,popularity,total_rating,total_rating_count,rating_count,developers,publishers,game_engines,category,time_to_beat,player_perspectives,game_modes,themes,genres,first_release_date,platforms,release_dates,alternative_names,screenshots,videos,cover,esrb,pegi,websites";
@@ -23,6 +23,7 @@ export default class NavBar extends React.Component {
 			.then(data => {
 				searchResult = data;
 				console.log(searchResult);
+				this.props.history.push('/search-results');
 			})
 			.catch(err => {
 				console.log(err);

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Slider from "react-slick";
 import {connect} from 'react-redux';
 import './popular-games-slider.css';
@@ -24,8 +24,9 @@ function getPopularGamesList() {
 			return popularGamesId;
 		});
 		console.log(popularGamesIdList);
-		let renderPopularGamesSlide = popularGamesSlides(popularGamesIdList);
-		console.log(renderPopularGamesSlide);
+		let popularGamesListToRender = popularGamesSlides(popularGamesIdList);
+		console.log(popularGamesListToRender);
+		return popularGamesListToRender;
 	})
 	.catch(err => {
 		console.log(err);
@@ -78,10 +79,48 @@ function PrevArrow(props) {
   );
 }
 export class PopularGamesSlider extends React.Component {
-	render() {
-		const gameProfile = this.props.gameProfile;
+	constructor(props) {
+		super(props);
 
-		getPopularGamesList();
+		this.state = {
+			searchResults: []
+		};
+	}
+
+	componentDidMount() {
+		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,popularity&order=popularity:desc";
+		fetch(PROXY_URL + IGDB_URL, {
+			method: 'GET',
+			headers: {
+				"user-key": '15870042b514b393825fc09f6b04056b',
+				"accept": 'application/json'
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			let popularGamesList = data;
+			console.log(popularGamesList);
+			let popularGamesIdList = popularGamesList.map((item) => {
+			let	popularGamesId = item.id;
+				return popularGamesId;
+			});
+			console.log(popularGamesIdList);
+			let popularGamesListToRender = popularGamesSlides(popularGamesIdList);
+			popularGamesListToRender => this.setState({
+				searchResults: popularGamesListToRender
+			});
+			console.log(this.state);
+
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	};
+	render() {
+		console.log(this.state);
+		const gameProfile = this.props.gameProfile;
+		const { searchResults } = this.state;
 
 		const settings = {
 			dots: true,
@@ -123,6 +162,9 @@ export class PopularGamesSlider extends React.Component {
 		return (
 
 			<Slider {...settings}>
+
+
+
 				<div className="slider-item-container">
 					<img src={"//images.igdb.com/igdb/image/upload/t_cover_big/" + gameProfile.cover.cloudinary_id + ".jpg"} />
 					<div className="slider-item-info-container">
