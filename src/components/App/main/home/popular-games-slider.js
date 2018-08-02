@@ -1,61 +1,10 @@
 import React from 'react';
 import Slider from "react-slick";
 import {connect} from 'react-redux';
+import {RENDER_HOME} from 
 import './popular-games-slider.css';
 import '../../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../../node_modules/slick-carousel/slick/slick-theme.css';
-
-function getPopularGamesList() {
-	const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-	const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,popularity&order=popularity:desc";
-	fetch(PROXY_URL + IGDB_URL, {
-		method: 'GET',
-		headers: {
-			"user-key": '15870042b514b393825fc09f6b04056b',
-			"accept": 'application/json'
-		}
-	})
-	.then(res => res.json())
-	.then(data => {
-		let popularGamesList = data;
-		console.log(popularGamesList);
-		let popularGamesIdList = popularGamesList.map((item) => {
-		let	popularGamesId = item.id;
-			return popularGamesId;
-		});
-		console.log(popularGamesIdList);
-		let popularGamesListToRender = popularGamesSlides(popularGamesIdList);
-		console.log(popularGamesListToRender);
-		return popularGamesListToRender;
-	})
-	.catch(err => {
-		console.log(err);
-	});
-};
-
-function popularGamesSlides(popularGamesIdList) {
-	const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-	let popularGamesRenderList = [];
-	for (let i = 0; i < popularGamesIdList.length; i ++) {
-		const IGDB_URL = "https://api-endpoint.igdb.com/games/" + popularGamesIdList[i] + "?fields=name,cover,genres";
-
-		fetch(PROXY_URL + IGDB_URL, {
-		method: 'GET',
-		headers: {
-			"user-key": '15870042b514b393825fc09f6b04056b',
-			"accept": 'application/json'
-		}
-		})
-		.then(res => res.json())
-		.then(data => {
-			popularGamesRenderList.push(data);
-		})
-		.catch(err => {
-			console.log(err);
-		});
-	}
-	return popularGamesRenderList;
-}
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -66,7 +15,7 @@ function NextArrow(props) {
       onClick={onClick}
     />
   );
-}
+};
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
@@ -77,19 +26,33 @@ function PrevArrow(props) {
       onClick={onClick}
     />
   );
-}
+};
+
 export class PopularGamesSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			searchResults: []
+			error: null,
+			isLoading: false,
+			items: {}
+
 		};
+
+		this.loadSlider = this.loadSlider.bind(this);
 	}
 
 	componentDidMount() {
+		this.loadSlider();
+	};
+
+	loadSlider() {
+		this.setState({
+			error: null,
+			isLoading: null,
+		});
 		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,popularity&order=popularity:desc";
+		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
@@ -99,28 +62,28 @@ export class PopularGamesSlider extends React.Component {
 		})
 		.then(res => res.json())
 		.then(data => {
-			let popularGamesList = data;
-			console.log(popularGamesList);
-			let popularGamesIdList = popularGamesList.map((item) => {
-			let	popularGamesId = item.id;
-				return popularGamesId;
-			});
-			console.log(popularGamesIdList);
-			let popularGamesListToRender = popularGamesSlides(popularGamesIdList);
-			popularGamesListToRender => this.setState({
-				searchResults: popularGamesListToRender
-			});
-			console.log(this.state);
-
+			console.log(data);
+			this.setState({isLoading: false, items: data[0].name});
 		})
 		.catch(err => {
 			console.log(err);
+			this.setState({isLoading: true, err});
 		});
 	};
+
+
+
+	componentDidUpdate() {
+		console.log(this.state.items);
+
+	}
 	render() {
-		console.log(this.state);
+		
 		const gameProfile = this.props.gameProfile;
-		const { searchResults } = this.state;
+		const { error, isLoading, items }  = this.state;
+		// const arrayOfGameCovers = popularGamesList.map(item => {return item.cover});
+		console.log(items);
+		// console.log(arrayOfGameCovers[0]);
 
 		const settings = {
 			dots: true,
@@ -159,16 +122,21 @@ export class PopularGamesSlider extends React.Component {
 			]
 		};
 
+		if (error) {
+			return <p>{error.message}</p>;
+		}
+
+		if (isLoading) {
+			return <p>Loading ...</p>;
+		}
+
 		return (
 
 			<Slider {...settings}>
-
-
-
 				<div className="slider-item-container">
 					<img src={"//images.igdb.com/igdb/image/upload/t_cover_big/" + gameProfile.cover.cloudinary_id + ".jpg"} />
 					<div className="slider-item-info-container">
-						<p>Title here</p>
+						<p>title</p>
 						<p>other info</p>
 					</div>
 				</div>

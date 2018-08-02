@@ -1,9 +1,9 @@
-import * as actions from '../actions';
+import {RENDER_HOME} from '../actions';
 
 const initialState = {
 
 
-
+	popularGamesList: [],
 	gameProfile: {
 
 		"id": 0,
@@ -103,5 +103,13 @@ const initialState = {
 }
 
 export const warpZoneReducer = (state=initialState, action) => {
+	let popularGamesList;
+	 if (action.type === RENDER_HOME) {
+        return Object.assign({}, state, {
+            popularGamesList: popularGamesList
+        });
+    }
+
+
 	return state;
 };
