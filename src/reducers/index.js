@@ -103,10 +103,10 @@ const initialState = {
 }
 
 export const warpZoneReducer = (state=initialState, action) => {
-	let popularGamesList;
+	let data;
 	 if (action.type === RENDER_HOME) {
         return Object.assign({}, state, {
-            popularGamesList: popularGamesList
+            popularGamesList: data
         });
     }
 

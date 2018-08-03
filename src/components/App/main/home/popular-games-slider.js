@@ -1,30 +1,33 @@
 import React from 'react';
-import Slider from "react-slick";
+import Slider from 'react-slick';
+import SliderItem from './slider-item'
 import {connect} from 'react-redux';
-import {RENDER_HOME} from 
+import { renderHome } from '../../../../actions';
 import './popular-games-slider.css';
 import '../../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../../node_modules/slick-carousel/slick/slick-theme.css';
 
+let SLIDERITEMSARRAY = [];
+
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", transform: "scale(3.0)"}}
-      onClick={onClick}
-    />
+	<div
+	  className={className}
+	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
+	  onClick={onClick}
+	/>
   );
 };
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", transform: "scale(3.0)"}}
-      onClick={onClick}
-    />
+	<div
+	  className={className}
+	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
+	  onClick={onClick}
+	/>
   );
 };
 
@@ -35,7 +38,78 @@ export class PopularGamesSlider extends React.Component {
 		this.state = {
 			error: null,
 			isLoading: false,
-			items: {}
+			items1: [
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				},
+				{
+					name: "",
+				 	genres: [],
+				 	cover: {
+				 		cloudinary_url:""
+				 	}
+				}
+			]
 
 		};
 
@@ -60,11 +134,20 @@ export class PopularGamesSlider extends React.Component {
 				"accept": 'application/json'
 			}
 		})
-		.then(res => res.json())
+		.then(res => {return res.json()})
 		.then(data => {
 			console.log(data);
-			this.setState({isLoading: false, items: data[0].name});
+
+			for (let i = 0; i < data.length; i ++) {
+				this.setState(`items${i}`:data[i]});
+			}
+			this.props.dispatch(renderHome(data));
 		})
+		// .then((data) => this.setState({isLoading: false, items: 
+
+		// 	[{key0: "value0", key1: {key2: "value3"}}]
+
+		// }))
 		.catch(err => {
 			console.log(err);
 			this.setState({isLoading: true, err});
@@ -74,16 +157,27 @@ export class PopularGamesSlider extends React.Component {
 
 
 	componentDidUpdate() {
-		console.log(this.state.items);
 
 	}
 	render() {
 		
 		const gameProfile = this.props.gameProfile;
+		const popularGamesList = this.props.popularGamesList;
 		const { error, isLoading, items }  = this.state;
-		// const arrayOfGameCovers = popularGamesList.map(item => {return item.cover});
-		console.log(items);
-		// console.log(arrayOfGameCovers[0]);
+		// let sliderItems=[];
+		console.log(this.state.items);
+		// if (!(sliderItems.length = 0)) {
+		// 	for (let i = 0; i < sliderItemsArray.length; i++) {
+		// 		sliderItems.push(
+		// 			<SliderItem 
+		// 			// name={ sliderItemsArray[i].name }
+		// 			// genres={ sliderItemsArray[i].genres }
+		// 			// url={sliderItemsArray[i].cover.cloudinary_url}
+		// 			 />
+		// 			);
+		// 	}
+		// }
+
 
 		const settings = {
 			dots: true,
@@ -133,20 +227,15 @@ export class PopularGamesSlider extends React.Component {
 		return (
 
 			<Slider {...settings}>
-				<div className="slider-item-container">
-					<img src={"//images.igdb.com/igdb/image/upload/t_cover_big/" + gameProfile.cover.cloudinary_id + ".jpg"} />
-					<div className="slider-item-info-container">
-						<p>title</p>
-						<p>other info</p>
-					</div>
-				</div>
+
 			</Slider>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	gameProfile: state.gameProfile
+	gameProfile: state.gameProfile,
+	popularGamesList: state.popularGamesList
 })
 
 export default connect(mapStateToProps)(PopularGamesSlider);
