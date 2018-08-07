@@ -1,6 +1,6 @@
 import React from 'react';
 import './login-form.css';
-
+import { loggedInUser } from '../../../actions';
 
 export default class LoginForm extends React.Component {
 	constructor(props) {
@@ -30,11 +30,28 @@ export default class LoginForm extends React.Component {
 	handleSubmit(event) {
 		alert("login complete");
 		event.preventDefault();
-		const username = document.getElementById("searchInput").value;
-			fetch("http://localhost:8000/api/login")
+		const loginUsername = document.getElementById("login-username").value;
+		const loginPassword = document.getElementById("login-password").value;
+		const user = {
+			username: loginUsername,
+			password: loginPassword
+		};
+			fetch("http://localhost:8000/api/login", {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(user)
+			})
 				.then(res => {
 					console.log(res);
+					return res.json();
 				})
+				.then(data => {
+				console.log(data);
+				this.props.dispatch(loggedInUser(data.user.username));
+			})
 				.catch(err => {
 					console.log(err);
 				})
@@ -50,6 +67,7 @@ export default class LoginForm extends React.Component {
 				<label>
 					Username
 					<input
+						id="login-username"
 						className="login-form-input"
 						name="username"
 						type="text"
@@ -60,6 +78,7 @@ export default class LoginForm extends React.Component {
 				<label>
 					Password
 					<input
+						id="login-password"
 						className="login-form-input"
 						name="password"
 						type="text"

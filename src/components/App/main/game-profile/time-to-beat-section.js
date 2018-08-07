@@ -12,9 +12,9 @@ export class TimeToBeatSection extends React.Component {
 			<div className="side-content-section-container">
 				<h3>Time to beat</h3>
 				<br/><br/>
-				<p>Hastly: {gameProfile.time_to_beat.hastly}</p>
-				<p>Beat normally: {gameProfile.time_to_beat.normally}</p>
-				<p>Completely: {gameProfile.time_to_beat.completely}</p>
+				<p>Hastly: { "time_to_beat" in gameProfile ? gameProfile.time_to_beat.hastly : null }</p>
+				<p>Beat normally: { "time_to_beat" in gameProfile ? gameProfile.time_to_beat.normally : null }</p>
+				<p>Completely: { "time_to_beat" in gameProfile ? gameProfile.time_to_beat.completely : null }</p>
 			</div>
 		)
 	};

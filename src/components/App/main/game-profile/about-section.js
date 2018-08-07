@@ -4,30 +4,54 @@ import '../../float-grid.css';
 import './about-section.css';
 
 export class AboutSection extends React.Component {
+	constructor(props) {
+		super(props);
 
-	render() {
-		const gameProfile = this.props.gameProfile;
-		const shortDescription = gameProfile.summary.slice(0,339) + "...";
-		const longDescription = gameProfile.summary;
+		this.switchAboutSummaryDescription = this.switchAboutSummaryDescription.bind(this);
+		this.renderShortDescription = this.renderShortDescription.bind(this);
+	}
 
-		function switchAboutSummaryDescription(event) {
-			event.preventDefault();
+	renderShortDescription() {
+		let shortDescription;
+		let longDescription;
+
+		return ({shortDescription})
+	};
+
+	switchAboutSummaryDescription(event) {
+		event.preventDefault();
+			let longDescription;
+		if (!(this.props.gameProfile.summary === "")) {
 			document.getElementById("about-summary").innerText = longDescription;
 			document.getElementById("read-more-about-summary").style.display = "none";
 		}
+	};
+
+	render() {
+		const gameProfile = this.props.gameProfile;
+
+		if (!(gameProfile.summary === "")) {
+			const shortDescription =  gameProfile.summary.slice(0,339) + "...";
+			const longDescription = gameProfile.summary;
+		}
+
+		else {
+			const shortDescription = "Summary unavailable";
+			const longDescription = "Summary unavailable";
+			}
 
 		return(
 			<div className="about-section-container">
-				<p className="about-info">Genre: {gameProfile.genres}</p>
-				<p className="about-info">Platform: {gameProfile.platforms}</p>
+				<p className="about-info">Genre: { "genres" in gameProfile ? gameProfile.genres : "Genres unavailable" }</p>
+				<p className="about-info">Platform: { "platforms" in gameProfile ? gameProfile.platforms : "Not yet released on a platform" }</p>
 				<p 
 					className="about-summary"
 					id="about-summary">
-					{shortDescription}
+					{this.renderShortDescription}
 				</p>
 				<span 
 					id="read-more-about-summary"
-					onClick={switchAboutSummaryDescription}>
+					onClick={() => this.switchAboutSummaryDescription()}>
 					Read more
 				</span>
 			</div>

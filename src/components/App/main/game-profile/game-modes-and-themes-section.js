@@ -6,8 +6,8 @@ import './game-modes-and-themes-section.css';
 export class GameModesAndThemesSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const gameModesList = gameProfile.game_modes.map((gameMode) => <li>{gameMode}</li>);
-		const themesList = gameProfile.themes.map((theme) => <li>{theme}</li>);
+		const gameModesList = gameProfile.game_modes.map((gameMode) => <li key={gameMode}>{gameMode}</li>);
+		const themesList = gameProfile.themes.map((theme) => <li key={theme}>{theme}</li>);
 		
 		return(
 

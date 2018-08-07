@@ -1,5 +1,6 @@
 import React from 'react';
 import './registeration-form.css';
+import { loggedInUser } from '../../../actions';
 
 
 export default class RegisterationForm extends React.Component {
@@ -44,14 +45,20 @@ export default class RegisterationForm extends React.Component {
 			fetch("http://localhost:8000/register", {
 				method: 'POST',
 				headers: {
-					Accept: 'application/json',
+					'Accept': 'application/json',
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(user)
 			})
 		  	.then(res => {
+		  		return res.json();
 				console.log(res);
 				alert("Registeration complete");
+				
+			})
+			.then(user => {
+				console.log(user);
+				this.props.dispatch(loggedInUser(user.username));
 			})
 			.catch(err => {
 				console.log(err);

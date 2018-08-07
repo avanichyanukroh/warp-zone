@@ -5,16 +5,33 @@
 	text-align: center;
 }
 
-img {
-	text-align: center;
+.popular-slider-img-container {
+	height: 250px;
+	width: 100%;
+	overflow: hidden;
+	border: 1px black solid;
+}
+.popular-slider-img {
+	display: block;
+	position: relative;
+	bottom: auto;
+	left: auto;
+	vertical-align: center;
 	height: auto;
 	width: 100%;
-
+	margin: 0 auto;
 }
 
 .slider-item-info-container {
+	padding: 10px;
 	background-color: rgba(0, 0, 0, 0.3);
 	border-top: 1px solid black;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
+	height: 65px;
+	overflow: auto;
+}
+
+.slider-item-title {
+	overflow: auto;
 }

@@ -11,7 +11,7 @@ export class GameProfile extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
 		const bannerStyle = {
-			backgroundImage: 'url(' + '//images.igdb.com/igdb/image/upload/t_screenshot_huge/' + gameProfile.screenshots[0].cloudinary_id + ')'
+			backgroundImage: 'url(' + '//images.igdb.com/igdb/image/upload/t_screenshot_huge/' + `${"screenshots" in gameProfile ? gameProfile.screenshots[0].cloudinary_id : null}` + ')'
 			};
 
 		return(
@@ -24,7 +24,7 @@ export class GameProfile extends React.Component {
 				</div>
 				<div className="game-profile-content-background">
 					<div className="row game-profile-preview-container">
-						<h1 className="col-12 game-profile-name">{gameProfile.name}</h1>
+						<h1 className="col-12 game-profile-name">{ "name" in gameProfile ? gameProfile.name : "Unititled" }</h1>
 						<GameProfileMainPreviewSection />
 						<GameProfileSidePreviewSection />
 					</div>

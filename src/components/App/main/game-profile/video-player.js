@@ -7,14 +7,14 @@ export class VideoPlayer extends React.Component {
 
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const videoPlayerStyle = {src: 'https://www.youtube.com/embed/qy8jmm9kY4A?autoplay=1'};
+		const videoPlayerUrl = "https://www.youtube.com/embed/" + `${ "videos" in gameProfile ? gameProfile.videos[0] : null }` + "?autoplay=1";
 		
 		return(
 			<div className="video-player-container">
 				<iframe 
 					className="col-12 video-player"
 					allowFullScreen="allowfullscreen"
-					src="https://www.youtube.com/embed/qy8jmm9kY4A?autoplay=1"
+					src={videoPlayerUrl}
 					autoFocus>
 				</iframe>
 			</div>

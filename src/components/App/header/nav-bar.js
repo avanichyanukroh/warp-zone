@@ -1,10 +1,12 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import '../float-grid.css';
 import './nav-bar.css';
 import SignUpAndLoginModal from './sign-up-and-login-modal';
-import { withRouter } from 'react-router-dom';
+import { renderSearchResults } from '../../../actions';
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -31,10 +33,16 @@ export default class NavBar extends React.Component {
 				return res.json();
 			})
 			.then(data => {
-				this.setState({gameSearchResults: data});
-				console.log(this.state);
-				//this.props.history.push('/search-results');
+				console.log(data);
+				let itemsList = [];
 
+				data.map(item => {
+					if ("name" in item && "cover" in item && "first_release_date" in item) {
+						itemsList.push(item);
+					}
+				});
+				this.props.dispatch(renderSearchResults(itemsList, searchTerm));
+				document.getElementById("searchInput").value = "";
 			})
 			.catch(err => {
 				console.log(err);
@@ -42,15 +50,50 @@ export default class NavBar extends React.Component {
 		};
 
 	render() {
-		const { gameSearchResults } = this.state;
-
+		const { gameSearchResults, redirectToSearchResults } = this.props;
 		
+			if (redirectToSearchResults) {
+				return (
+
+					<div className="nav-bar-container">
+						<Redirect to={"/search-results"} />
+						<nav>
+							<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
+							<div className="search-bar-container">
+								<form>
+									<input 
+										type="text" 
+										placeholder="Search.." 
+										name="search" 
+										className="search-bar-input"
+										id="searchInput" />
+									<button 
+										type="submit" 
+										className="search-bar-btn"
+										onClick={this.submitSearch}>
+										<i className="fa fa-search"></i>
+									</button>
+								</form>
+							</div>
+							<ul>
+								<li>Link</li>
+								<li>Link</li>
+								<li>Link</li>
+							</ul>
+							<div className="signup-login-container" id="modal-display">
+								<SignUpAndLoginModal />
+							</div>
+							<div className="clear-both"></div>
+						</nav>
+					</div>
+				);
+			};
 
 		return (
 
 			<div className="nav-bar-container">
 				<nav>
-					<h2>Warp Zone</h2>
+					<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
 					<div className="search-bar-container">
 						<form>
 							<input 
@@ -81,3 +124,10 @@ export default class NavBar extends React.Component {
 			);
 		}
 }
+
+const mapStateToProps = state => ({
+	searchResults: state.searchResults,
+	redirectToSearchResults: state.redirectToSearchResults
+});
+
+export default connect(mapStateToProps)(NavBar);

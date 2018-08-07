@@ -6,7 +6,10 @@
 	z-index: 3;
 }
 
-nav {
+.main-logo {
+	text-decoration: none;
+	color: white;
+
 }
 
 .search-bar-container {

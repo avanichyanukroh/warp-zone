@@ -9,13 +9,27 @@ export const renderUserProfile = () => ({
 });
 
 export const RENDER_SEARCH_RESULTS = 'RENDER_SEARCH_RESULTS';
-export const renderSearchResults = () => ({
-    type: RENDER_SEARCH_RESULTS
+export const renderSearchResults = (data, searchTerm) => ({
+    type: RENDER_SEARCH_RESULTS,
+    searchResults: data,
+    searchTerm: searchTerm
 });
 
-export const RENDER_GAME_PROFILE = 'RENDER_GAME_PROFILE';
-export const renderGameProfile = () => ({
-    type: RENDER_GAME_PROFILE
+export const RESET_REDIRECT = 'RESET_REDIRECT';
+export const resetRedirect = () => ({
+    type: RESET_REDIRECT
+});
+
+export const SELECTED_GAME_PROFILE_TO_RENDER = 'SELECTED_GAME_PROFILE_TO_RENDER';
+export const selectedGameProfileToRender = (selectedGameProfile) => ({
+    type: SELECTED_GAME_PROFILE_TO_RENDER,
+    selectedGameProfile: selectedGameProfile
+});
+
+export const LOGGED_IN_USER = 'LOGGED_IN_USER';
+export const loggedInUser = (username) => ({
+    type: LOGGED_IN_USER,
+    loggedInUser: username
 });
 
 export const ADD_TO_WISH_LIST = 'ADD_TO_WISH_LIST';

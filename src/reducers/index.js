@@ -1,16 +1,19 @@
-import {RENDER_HOME} from '../actions';
+import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER } from '../actions';
 
 const initialState = {
 
-
+	loggedInUser: undefined,
+	redirectToSearchResults: false,
 	popularGamesList: [],
+	searchResults: [],
+	searchTerm: "",
 	gameProfile: {
 
 		"id": 0,
 		"name": "",
 		"url": "",
 		"summary": "",
-		"storyline": 0,
+		"storyline": "",
 		"collection": 0,
 		"rating": 0,
 		"popularity": 0,
@@ -102,13 +105,41 @@ const initialState = {
 	}
 }
 
-export const warpZoneReducer = (state=initialState, action) => {
+export const warpZoneReducer = (state = initialState, action) => {
 	let data;
-	 if (action.type === RENDER_HOME) {
-        return Object.assign({}, state, {
-            popularGamesList: data
-        });
-    }
+	if (action.type === RENDER_HOME) {
+		return Object.assign({}, state, {
+			popularGamesList: action.data,
+			redirectToSearchResults: false
+		});
+	};
+
+	if (action.type === RENDER_SEARCH_RESULTS) {
+		console.log(data);
+		return Object.assign({}, state, {
+			redirectToSearchResults: true,
+			searchResults: action.searchResults,
+			searchTerm: action.searchTerm
+		});
+	};
+
+	if (action.type === RESET_REDIRECT) {
+		return Object.assign({}, state, {
+			redirectToSearchResults: false
+		});
+	};
+
+	if (action.type === SELECTED_GAME_PROFILE_TO_RENDER) {
+		return Object.assign({}, state, {
+			gameProfile: action.selectedGameProfile
+		});
+	};
+
+	if (action.type === LOGGED_IN_USER) {
+		return Object.assign({}, state, {
+			loggedInUser: action.loggedInUser
+		});
+	};
 
 
 	return state;

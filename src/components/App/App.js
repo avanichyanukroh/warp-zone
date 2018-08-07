@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './App.css';
 import NavBar from './header/nav-bar';
@@ -12,8 +12,12 @@ import Footer from './footer/footer.js';
 
 export class App extends Component {
 	render() {
-		
+
+		const { redirectToSearchResults } = this.props;
+		console.log(redirectToSearchResults);
+
 		return (
+			
 			<Router>
 				<div className="App">
 					<header className="App-header" role="banner">
@@ -33,6 +37,7 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
+	redirectToSearchResults: state.redirectToSearchResults,
 	gameProfile: state.gameProfile
 })
 

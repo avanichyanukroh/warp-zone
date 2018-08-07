@@ -1,185 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
-import SliderItem from './slider-item'
 import {connect} from 'react-redux';
 import { renderHome } from '../../../../actions';
 import './popular-games-slider.css';
 import '../../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../../node_modules/slick-carousel/slick/slick-theme.css';
 
-let SLIDERITEMSARRAY = [];
-
-function NextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-	<div
-	  className={className}
-	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
-	  onClick={onClick}
-	/>
-  );
-};
-
-function PrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-	<div
-	  className={className}
-	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
-	  onClick={onClick}
-	/>
-  );
-};
-
-export class PopularGamesSlider extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			error: null,
-			isLoading: false,
-			items1: [
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				},
-				{
-					name: "",
-				 	genres: [],
-				 	cover: {
-				 		cloudinary_url:""
-				 	}
-				}
-			]
-
-		};
-
-		this.loadSlider = this.loadSlider.bind(this);
-	}
-
-	componentDidMount() {
-		this.loadSlider();
-	};
-
-	loadSlider() {
-		this.setState({
-			error: null,
-			isLoading: null,
-		});
-		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
-		fetch(PROXY_URL + IGDB_URL, {
-			method: 'GET',
-			headers: {
-				"user-key": '15870042b514b393825fc09f6b04056b',
-				"accept": 'application/json'
-			}
-		})
-		.then(res => {return res.json()})
-		.then(data => {
-			console.log(data);
-
-			for (let i = 0; i < data.length; i ++) {
-				this.setState(`items${i}`:data[i]});
-			}
-			this.props.dispatch(renderHome(data));
-		})
-		// .then((data) => this.setState({isLoading: false, items: 
-
-		// 	[{key0: "value0", key1: {key2: "value3"}}]
-
-		// }))
-		.catch(err => {
-			console.log(err);
-			this.setState({isLoading: true, err});
-		});
-	};
-
-
-
-	componentDidUpdate() {
-
-	}
-	render() {
-		
-		const gameProfile = this.props.gameProfile;
-		const popularGamesList = this.props.popularGamesList;
-		const { error, isLoading, items }  = this.state;
-		// let sliderItems=[];
-		console.log(this.state.items);
-		// if (!(sliderItems.length = 0)) {
-		// 	for (let i = 0; i < sliderItemsArray.length; i++) {
-		// 		sliderItems.push(
-		// 			<SliderItem 
-		// 			// name={ sliderItemsArray[i].name }
-		// 			// genres={ sliderItemsArray[i].genres }
-		// 			// url={sliderItemsArray[i].cover.cloudinary_url}
-		// 			 />
-		// 			);
-		// 	}
-		// }
-
-
-		const settings = {
+const settings = {
 			dots: true,
 			infinite: false,
 			speed: 500,
@@ -216,26 +43,103 @@ export class PopularGamesSlider extends React.Component {
 			]
 		};
 
-		if (error) {
-			return <p>{error.message}</p>;
-		}
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+	<div
+	  className={className}
+	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
+	  onClick={onClick}
+	/>
+  );
+};
 
-		if (isLoading) {
-			return <p>Loading ...</p>;
-		}
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+	<div
+	  className={className}
+	  style={{ ...style, display: "block", transform: "scale(3.0)"}}
+	  onClick={onClick}
+	/>
+  );
+};
+
+export class PopularGamesSlider extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			items: []
+		};
+
+		this.loadSlider = this.loadSlider.bind(this);
+	}
+
+	componentDidMount() {
+		this.loadSlider();
+	};
+
+	loadSlider() {
+
+		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
+		fetch(PROXY_URL + IGDB_URL, {
+			method: 'GET',
+			headers: {
+				"user-key": '15870042b514b393825fc09f6b04056b',
+				"accept": 'application/json'
+			}
+		})
+		.then(res => {return res.json()})
+		.then(data => {
+			let itemsList = [];
+
+			data.map(item => {
+				if ("name" in item && "cover" in item && "genres" in item) {
+					itemsList.push(item);
+				}
+			});
+			this.setState({items: itemsList});
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	};
+
+	render() {
+		
+		const gameProfile = this.props.gameProfile;
+		const { items }  = this.state;
+		let sliderItems = [];
+			for (let i = 0; i < items.length; i++) {
+
+				let url = i in items ? items[i].cover.cloudinary_id : null;
+				sliderItems.push(
+				<div className="slider-item-container" key={ i in items ? items[i].id : null }>
+					<div className="popular-slider-img-container">
+						<img className="popular-slider-img"src={ "//images.igdb.com/igdb/image/upload/t_cover_big/" + url + ".jpg" } />
+					</div>
+					<div className="slider-item-info-container">
+						<p className="slider-item-title">{ i in items ? items[i].name : null }</p>
+						<p>{ i in items ? items[i].genres : null }</p>
+					</div>
+				</div>
+					);
+			}
+		
 
 		return (
 
 			<Slider {...settings}>
-
+				{sliderItems}
 			</Slider>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	gameProfile: state.gameProfile,
-	popularGamesList: state.popularGamesList
-})
+	gameProfile: state.gameProfile
+});
 
 export default connect(mapStateToProps)(PopularGamesSlider);

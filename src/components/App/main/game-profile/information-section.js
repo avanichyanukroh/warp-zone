@@ -6,17 +6,17 @@ import './information-section.css';
 export class InformationSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const developersList = gameProfile.developers.map((developer) => <li>{developer}</li>);
-		const publishersList = gameProfile.publishers.map((publisher) => <li>{publisher}</li>);
-		const gameEnginesList = gameProfile.game_engines.map((gameEngine) => <li>{gameEngine}</li>);
-		const playerPerspectivesList = gameProfile.player_perspectives.map((playerPerspective) => <li>{playerPerspective}</li>);
+		const developersList = gameProfile.developers.map((developer) => <li key={developer}>{developer}</li>);
+		const publishersList = gameProfile.publishers.map((publisher) => <li key={publisher}>{publisher}</li>);
+		const gameEnginesList = gameProfile.game_engines.map((gameEngine) => <li key={gameEngine}>{gameEngine}</li>);
+		const playerPerspectivesList = gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{playerPerspective}</li>);
 		
 		return(
 
 			<div className="side-content-section-container">
 				<label>Title:</label>
 				<br/><br/>
-				 <p>{gameProfile.name}</p>
+				 <p>{ !(gameProfile.name == "") ? gameProfile.name : "Untitled"}</p>
 				 <br/><br/>
 				<label>Developers:</label>
 				<br/><br/>
