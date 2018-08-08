@@ -13,3 +13,12 @@
 .about-summary {
 	margin-top: 10px;
 }
+
+#read-more-about-summary {
+	color: deepskyblue;
+	cursor: pointer;
+}
+
+#read-more-about-summary:hover {
+	color: cyan;
+}
