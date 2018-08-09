@@ -26,6 +26,13 @@ export const selectedGameProfileToRender = (selectedGameProfile) => ({
     selectedGameProfile: selectedGameProfile
 });
 
+export const PRICE_LIST_TO_RENDER = 'PRICE_LIST_TO_RENDER';
+export const priceListToRender = (gamePriceListExactMatch, gamePriceListSimilarMatch) => ({
+    type: PRICE_LIST_TO_RENDER,
+    gamePriceListExactMatch: gamePriceListExactMatch,
+    gamePriceListSimilarMatch: gamePriceListSimilarMatch
+});
+
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 export const loggedInUser = (username) => ({
     type: LOGGED_IN_USER,

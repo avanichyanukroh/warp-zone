@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { priceListToRender } from '../../../../actions';
 import '../../float-grid.css';
 import './price-list-section.css';
 
@@ -23,18 +24,17 @@ export class PriceListSection extends React.Component {
 		})
 		.then(res => {return res.json()})
 		.then(data => {
-			let gamePriceList;
-			console.log(data.products);
+			let gamePriceListExactMatch = [];
+			let gamePriceListSimilarMatch = [];
 			data.products.map(item => {
 				if (item["product-name"] === this.props.gameProfile.name) {
-					gamePriceList = item;
+					gamePriceListExactMatch.push(item);
 				}
-				if (gamePriceList = undefined) {
-					
+				else {
+					gamePriceListSimilarMatch.push(item);
 				}
 			});
-			console.log(gamePriceList);
-			this.setState({priceList: gamePriceList});
+			this.props.dispatch(priceListToRender(gamePriceListExactMatch, gamePriceListSimilarMatch));
 		})
 		.catch(err => {
 			console.log(err);
@@ -42,26 +42,68 @@ export class PriceListSection extends React.Component {
 	};
 
 	render() {
-		const gameProfile = this.props.gameProfile;
-		const priceList = this.props.priceList;
-		const usedPriceToString = priceList["loose-price"].toString();
-		const newPriceToString = priceList["new-price"].toString();
-		const usedPriceDisplay = "$" + usedPriceToString.slice(0, -2) + "." + usedPriceToString.slice(-2);
-		const newPriceDisplay = "$" + newPriceToString.slice(0, -2) + "." + newPriceToString.slice(-2);
-		const amazonPriceListLink = "https://www.amazon.com/gp/offer-listing/" + priceList.asin;
+		const { gameProfile } = this.props;
+		const { priceListExactMatch, priceListSimilarMatch } = this.props;
 
-		return(
+		let priceListExactMatchToRender = [];
+		let priceListSimilarMatchToRender = [];
+		console.log(priceListSimilarMatch.length > 0 ? priceListSimilarMatch : null);
+		if (priceListExactMatch.length > 0) {
 
-			<div className="main-content-section-container">
-				<h3>Price List</h3>
-				<br/>
+			for (let i = 0; i < priceListExactMatch.length; i++) {
+
+				const usedPriceToString = i in priceListExactMatch ? priceListExactMatch[i]["loose-price"].toString() : null;
+				const newPriceToString = i in priceListExactMatch ? priceListExactMatch[i]["new-price"].toString() : null;
+				const usedPriceDisplay = "$" + usedPriceToString.slice(0, -2) + "." + usedPriceToString.slice(-2);
+				const newPriceDisplay = "$" + newPriceToString.slice(0, -2) + "." + newPriceToString.slice(-2);
+				const amazonPriceListLink = "https://www.amazon.com/gp/offer-listing/" + priceListExactMatch[i].asin;
+
+				priceListExactMatchToRender.push(
+					<div className="price-list-item-container" key={ i in priceListExactMatch ? i : null }>
+						<h4 className="price-list-item-title">{priceListExactMatch[i]["product-name"]}</h4>
+						<label>Used Price:</label> <p>{usedPriceDisplay}</p>
+						<label>New Price:</label> <p>{newPriceDisplay}</p>
+						<label>Amazon Price List:</label> <a className="amazon-links" href={amazonPriceListLink}>Check Amazon</a>
+					</div>
+				);
+			};
+		};
+
+		if (priceListSimilarMatch.length > 0) {
+
+			for (let i = 0; i < priceListSimilarMatch.length; i++) {
+
+				const usedPriceToString = priceListSimilarMatch[i]["loose-price"].toString();
+				const newPriceToString = priceListSimilarMatch[i]["new-price"].toString();
+				const usedPriceDisplay = "$" + usedPriceToString.slice(0, -2) + "." + usedPriceToString.slice(-2);
+				const newPriceDisplay = "$" + newPriceToString.slice(0, -2) + "." + newPriceToString.slice(-2);
+				const amazonPriceListLink = "https://www.amazon.com/gp/offer-listing/" + priceListSimilarMatch[i].asin;
+
+				priceListSimilarMatchToRender.push(
+					<div className="price-list-item-container" key={ i in priceListSimilarMatch ? i : null }>
+						<h4 className="price-list-item-title">{priceListSimilarMatch[i]["product-name"]}</h4>
+						<label>Used Price:</label> <p>{usedPriceDisplay}</p>
+						<label>New Price:</label> <p>{newPriceDisplay}</p>
+						<label>Amazon Price List:</label> <a className="amazon-links" href={amazonPriceListLink}>Check Amazon</a>
+					</div>
+				);
+			};
+		};
+
+		return (
+
+			<div>
+				<div className="main-content-section-container">
+					<h3>Price List for "{gameProfile.name}"</h3>
+					<br/>
+					{priceListExactMatchToRender.length > 0 ? priceListExactMatchToRender : <p>None available</p>}
+				</div>
+				<div className="main-content-section-container">
+					<h3>Price List similar to "{gameProfile.name}"</h3>
+					<br/>
+					{priceListSimilarMatchToRender.length > 0 ? priceListSimilarMatchToRender : <p>None available</p>}
+				</div>
 				<p>based on pricecharting.com trend prices</p>
-				<br/>
-				<label>Used Price:</label> {usedPriceDisplay}
-				<br/><br/>
-				<label>New Price:</label> {newPriceDisplay}
-				<br/><br/>
-				<label>Amazon Price List:</label> {amazonPriceListLink}
 			</div>
 		)
 	};
@@ -69,7 +111,8 @@ export class PriceListSection extends React.Component {
 
 const mapStateToProps = state => ({
 	gameProfile: state.gameProfile,
-	priceList: state.priceList
+	priceListExactMatch: state.priceListExactMatch,
+	priceListSimilarMatch: state.priceListSimilarMatch
 })
 
 export default connect(mapStateToProps)(PriceListSection);

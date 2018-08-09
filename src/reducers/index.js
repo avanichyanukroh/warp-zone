@@ -1,4 +1,4 @@
-import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER } from '../actions';
+import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER, PRICE_LIST_TO_RENDER } from '../actions';
 
 const initialState = {
 
@@ -85,15 +85,9 @@ const initialState = {
 			}]
 	},
 
-	priceList: {
+	priceListExactMatch: [],
 
-		"asin": "",
-		"console-name": "",
-		"id": "",
-		"loose-price": 0,
-		"new-price": 0,
-		"product-name": ""
-		},
+	priceListSimilarMatch: [],
 
 	userProfile: {
 
@@ -132,6 +126,13 @@ export const warpZoneReducer = (state = initialState, action) => {
 	if (action.type === SELECTED_GAME_PROFILE_TO_RENDER) {
 		return Object.assign({}, state, {
 			gameProfile: action.selectedGameProfile
+		});
+	};
+
+	if (action.type === PRICE_LIST_TO_RENDER) {
+		return Object.assign({}, state, {
+			priceListExactMatch: action.gamePriceListExactMatch,
+			priceListSimilarMatch: action.gamePriceListSimilarMatch
 		});
 	};
 

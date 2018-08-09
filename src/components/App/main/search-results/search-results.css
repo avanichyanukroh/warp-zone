@@ -38,3 +38,7 @@
 	color: white;
 	text-decoration: none;
 }
+
+.search-results-link:hover {
+	color: #d4eefc;
+}

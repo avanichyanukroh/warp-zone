@@ -16,6 +16,8 @@ export class SearchResults extends React.Component {
 
 		this.resetRedirect = this.resetRedirect.bind(this);
 		this.watchSelectedGameProfile = this.watchSelectedGameProfile.bind(this);
+
+		console.log(window.location.search.split("=")[1]);
 	};
 
 	componentDidMount() {

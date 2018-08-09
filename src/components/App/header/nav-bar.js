@@ -50,13 +50,13 @@ class NavBar extends React.Component {
 		};
 
 	render() {
-		const { gameSearchResults, redirectToSearchResults } = this.props;
+		const { gameSearchResults, searchTerm, redirectToSearchResults } = this.props;
 		
 			if (redirectToSearchResults) {
 				return (
 
 					<div className="nav-bar-container">
-						<Redirect to={"/search-results"} />
+						<Redirect to={"/search-results?search=" + searchTerm} />
 						<nav>
 							<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
 							<div className="search-bar-container">
@@ -127,6 +127,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = state => ({
 	searchResults: state.searchResults,
+	searchTerm: state.searchTerm,
 	redirectToSearchResults: state.redirectToSearchResults
 });
 

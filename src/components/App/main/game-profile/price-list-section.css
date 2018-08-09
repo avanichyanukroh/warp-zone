@@ -1,0 +1,18 @@
+
+
+.price-list-item-container {
+	padding: 10px;
+	border: 1px black solid;
+}
+.price-list-item-title {
+	text-align: center;
+}
+.amazon-links {
+	color: deepskyblue;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.amazon-links:hover {
+	color: cyan;
+}

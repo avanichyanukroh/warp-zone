@@ -81,9 +81,12 @@ export class PopularGamesSlider extends React.Component {
 	};
 
 	loadSlider() {
+let genreMap = {};
+for (let i = 0; i <= 33; i ++) {
 
 		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
+		// const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
+		const IGDB_URL = "https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/genres/" + i + "?fields=name"
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
@@ -92,20 +95,26 @@ export class PopularGamesSlider extends React.Component {
 			}
 		})
 		.then(res => {return res.json()})
-		.then(data => {
-			let itemsList = [];
+		// .then(data => {
+		// 	let itemsList = [];
 
-			data.map(item => {
-				if ("name" in item && "cover" in item && "genres" in item) {
-					itemsList.push(item);
-				}
-			});
-			this.setState({items: itemsList});
+		// 	data.map(item => {
+		// 		if ("name" in item && "cover" in item && "genres" in item) {
+		// 			itemsList.push(item);
+		// 		}
+		// 	});
+		// 	this.setState({items: itemsList});
+		// })
+		.then(data => {
+			console.log(data[0], data[1]);
+			genreMap[i] = data[0].name;
 		})
+		.then(()=>console.log(genreMap))
 		.catch(err => {
 			console.log(err);
 		});
 	};
+}
 
 	render() {
 		

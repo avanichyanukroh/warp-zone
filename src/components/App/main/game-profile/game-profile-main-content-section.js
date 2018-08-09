@@ -12,10 +12,10 @@ export class GameProfileSideContentSection extends React.Component {
 		return(
 			<div className="col-8">
 				<div className="grid-separator-container">
-					<PriceListSection />
+					<StorylineSection />
 				</div>
 				<div className="grid-separator-container">
-					<StorylineSection />
+					<PriceListSection />
 				</div>
 			</div>
 		)
