@@ -55,72 +55,59 @@ class NavBar extends React.Component {
 			if (redirectToSearchResults) {
 				return (
 
-					<div className="nav-bar-container">
+					<nav className="nav-bar-container">
 						<Redirect to={"/search-results?search=" + searchTerm} />
-						<nav>
-							<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
-							<div className="search-bar-container">
-								<form>
-									<input 
-										type="text" 
-										placeholder="Search.." 
-										name="search" 
-										className="search-bar-input"
-										id="searchInput" />
-									<button 
-										type="submit" 
-										className="search-bar-btn"
-										onClick={this.submitSearch}>
-										<i className="fa fa-search"></i>
-									</button>
-								</form>
-							</div>
-							<ul>
-								<li>Link</li>
-								<li>Link</li>
-								<li>Link</li>
-							</ul>
-							<div className="signup-login-container" id="modal-display">
-								<SignUpAndLoginModal />
-							</div>
-							<div className="clear-both"></div>
-						</nav>
-					</div>
-				);
-			};
+
+						<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
+						<div className="search-bar-container">
+							<form>
+								<input 
+									type="text" 
+									placeholder="Search.." 
+									name="search" 
+									className="search-bar-input"
+									id="searchInput" />
+								<button 
+									type="submit" 
+									className="search-bar-btn"
+									onClick={this.submitSearch}>
+									<i className="fa fa-search"></i>
+								</button>
+							</form>
+						</div>
+						<div className="signup-login-container" id="modal-display">
+							<SignUpAndLoginModal />
+						</div>
+						<div className="clear-both"></div>
+					</nav>
+			);
+		};
 
 		return (
 
-			<div className="nav-bar-container">
-				<nav>
-					<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
-					<div className="search-bar-container">
-						<form>
-							<input 
-								type="text" 
-								placeholder="Search.." 
-								name="search" 
-								className="search-bar-input"
-								id="searchInput" />
-							<button 
-								type="submit" 
-								className="search-bar-btn"
-								onClick={this.submitSearch}>
-								<i className="fa fa-search"></i>
-							</button>
-						</form>
-					</div>
-					<ul>
-						<li>Link</li>
-						<li>Link</li>
-						<li>Link</li>
-					</ul>
-					<div className="signup-login-container" id="modal-display">
-						<SignUpAndLoginModal />
-					</div>
-					<div className="clear-both"></div>
-				</nav>
-			</div>
+			<nav className="nav-bar-container">
+				<h2><Link className="main-logo" to="/">Warp Zone</Link></h2>
+				<div className="search-bar-container">
+					<form>
+						<input 
+							type="text" 
+							placeholder="Search.." 
+							name="search" 
+							className="search-bar-input"
+							id="searchInput" />
+						<button
+							type="submit" 
+							className="search-bar-btn"
+							onClick={this.submitSearch}>
+							<i className="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+				<div className="signup-login-container" id="modal-display">
+					<SignUpAndLoginModal />
+				</div>
+				<div className="clear-both"></div>
+			</nav>
 			);
 		}
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Link, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './App.css';
@@ -10,7 +10,7 @@ import UserProfile from './main/user-profile/user-profile';
 import Footer from './footer/footer.js';
 
 
-export class App extends Component {
+export class App extends React.Component {
 	render() {
 
 		const { redirectToSearchResults } = this.props;

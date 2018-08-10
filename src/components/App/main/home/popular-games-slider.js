@@ -82,11 +82,11 @@ export class PopularGamesSlider extends React.Component {
 
 	loadSlider() {
 let genreMap = {};
-for (let i = 0; i <= 33; i ++) {
+for (let i = 0; i <= 0; i ++) {
 
 		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 		// const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
-		const IGDB_URL = "https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/genres/" + i + "?fields=name"
+		const IGDB_URL = "https://api-endpoint.igdb.com/collections/" + i + "?fields=name"
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
@@ -106,7 +106,6 @@ for (let i = 0; i <= 33; i ++) {
 		// 	this.setState({items: itemsList});
 		// })
 		.then(data => {
-			console.log(data[0], data[1]);
 			genreMap[i] = data[0].name;
 		})
 		.then(()=>console.log(genreMap))
