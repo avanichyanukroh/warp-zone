@@ -1,15 +1,17 @@
 import React from 'react';
 import './registeration-form.css';
+import { connect } from 'react-redux';
 import { loggedInUser } from '../../../actions';
 
-
-export default class RegisterationForm extends React.Component {
+class RegisterationForm extends React.Component {
 	constructor(props) {
 	super(props);
 	this.state = {
-		username: '',
-		password: '',
-		validatePassword: ''
+		username: "",
+		password: "",
+		validatePassword: "",
+		errorDisplay: false,
+		paswordMatchError: false
 	};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -32,12 +34,11 @@ export default class RegisterationForm extends React.Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		const username = document.getElementById("username").value;
-		const password = document.getElementById("password").value;
-		const validatePassword = document.getElementById("validatePassword").value;
+		const username = this.state.username;
+		const password = this.state.password;
+		const validatePassword = this.state.validatePassword;
 
 		if (password === validatePassword) {
-			console.log("password equals");
 			const user = {
 				username: username,
 				password: password
@@ -51,28 +52,48 @@ export default class RegisterationForm extends React.Component {
 				body: JSON.stringify(user)
 			})
 		  	.then(res => {
+		  		console.log(res);
 		  		return res.json();
-				console.log(res);
-				alert("Registeration complete");
-				
 			})
 			.then(user => {
 				console.log(user);
-				this.props.dispatch(loggedInUser(user.username));
+				this.props.dispatch(loggedInUser(user.username, user));
+				console.log(this.props.userProfile);
+		  		this.setState({
+					username: "",
+					password: "",
+					validatePassword: ""
+				});
+				alert("Registeration complete, logging you in now");
 			})
 			.catch(err => {
 				console.log(err);
-			})
+				this.setState({
+					username: "",
+					password: "",
+					validatePassword: "",
+					errorDisplay: true
+				});
+			});
 		}
 		else {
-			console.log("password not equals");
-			document.getElementById("validationError").style.display = "block";
-		}
-	}
+			this.setState({passwordMatchError: true})
+		};
+	};
 
 	render() {
 
-		const validateErrorStyle = {display: "none"};
+		function renderErrorDisplay() {
+			return (
+				<p className="username-password-error-text">Username has been used, please try a new username.</p>
+				);
+		};
+
+		function renderPasswordMatchError() {
+			return (
+				<p className="username-password-error-text">Validation password does not match, please try again.</p>
+				);
+		};
 
 		return (
 
@@ -113,11 +134,19 @@ export default class RegisterationForm extends React.Component {
 						value={this.state.validatePassword}
 						onChange={this.handleChange} 
 						/>
-					<div id="validationError" style={validateErrorStyle}>Password does not match, please re-enter password</div>
+						{this.state.passwordMatchError ? renderPasswordMatchError() : null}
 				</label>
+				{this.state.errorDisplay ? renderErrorDisplay() : null}
 				<input className="form-submit-btn" type="submit" value="Submit" />
 			</form>
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	searchResults: state.searchResults,
+	searchTerm: state.searchTerm
+})
+
+export default connect(mapStateToProps)(RegisterationForm);

@@ -50,7 +50,7 @@ export default class SignUpAndLogInModal extends React.Component {
 			contentLabel="Sign up"
 			onRequestClose={this.handleCloseModal}>
 			<div className="close-modal-wrapper">
-				<i className="fas fa-times fa-lg" onClick={this.handleCloseModal}></i>
+				<i className="fas fa-times fa-lg exit-modal-icon" onClick={this.handleCloseModal}></i>
 			</div>
 			<RegisterationForm />
 		</ReactModal>
@@ -61,7 +61,7 @@ export default class SignUpAndLogInModal extends React.Component {
 			contentLabel="Log in"
 			onRequestClose={this.handleCloseModal2}>
 			<div className="close-modal-wrapper">
-		 		<i className="fas fa-times fa-lg" onClick={this.handleCloseModal2}></i>
+		 		<i className="fas fa-times fa-lg exit-modal-icon" onClick={this.handleCloseModal2}></i>
 		 	</div>
 		 	<LoginForm />
 		</ReactModal>

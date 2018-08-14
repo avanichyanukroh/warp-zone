@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "reac
 import { resetRedirect, selectedGameProfileToRender } from '../../../../actions';
 import '../../float-grid.css';
 import './search-results.css';
+import { genres } from '../../IGDB-id-converter.js';
 
 
 export class SearchResults extends React.Component {
@@ -16,8 +17,6 @@ export class SearchResults extends React.Component {
 
 		this.resetRedirect = this.resetRedirect.bind(this);
 		this.watchSelectedGameProfile = this.watchSelectedGameProfile.bind(this);
-
-		console.log(window.location.search.split("=")[1]);
 	};
 
 	componentDidMount() {
@@ -35,18 +34,16 @@ export class SearchResults extends React.Component {
 	watchSelectedGameProfile(key) {
 		if (!(key == null)) {
 			let selectedGameProfile = this.props.searchResults[`${key}`];
-			console.log(selectedGameProfile);
 			this.props.dispatch(selectedGameProfileToRender(selectedGameProfile));
 		}
 	};
 
 	render() {
 		const { searchResults, searchTerm } = this.props;
-
-
-
 		let searchResultItems = [];
+
 			if (searchResults.length > 0) {
+
 				for (let i = 0; i < searchResults.length; i++) {
 
 					const releaseDate = new Date(i in searchResults ? searchResults[i].first_release_date : null);
@@ -54,35 +51,37 @@ export class SearchResults extends React.Component {
 					const releaseDateSplit = releaseDateString.split(' ');
 					const releaseDateDisplay = releaseDateSplit[3];
 
+					let genresList = [];
+					let genresToMap = "genres" in searchResults[i] ? searchResults[i].genres : [];
+					let mappedGenres = genresToMap.map(genre => {genresList.push(genres[genre])});
 					let url = i in searchResults ? searchResults[i].cover.cloudinary_id : null;
 
 					searchResultItems.push(
-					<li className="search-result-item" key={ i in searchResults ? searchResults[i].id : null }>
-						<div className="search-results-img-container">
-							<Link
-								// id="search-results-link"
-								className="search-results-link"
-								to="/game-profile"
-								key={ i in searchResults ? i : null }
-								onClick={ () => this.watchSelectedGameProfile( i in searchResults ? i : null ) }>
-									<img className="search-results-img"src={ "//images.igdb.com/igdb/image/upload/t_cover_small/" + url + ".jpg" } />
-							</Link>
-						</div>
-						<div className="search-results-info-container">
-							<h3>
+						<li className="search-result-item" key={ i in searchResults ? searchResults[i].id : null }>
+							<div className="search-results-img-container">
 								<Link
-								className="search-results-link"
-								to="/game-profile"
-								onClick={ () => this.watchSelectedGameProfile( i in searchResults ? i : null ) }>
-									{ i in searchResults ? searchResults[i].name : null }{" (" + releaseDateDisplay + ")"}
+									className="search-results-link"
+									to={`/game-profile/?${searchResults[i].name}`}
+									key={ i in searchResults ? i : null }
+									onClick={ () => this.watchSelectedGameProfile( i in searchResults ? i : null ) }>
+										<img className="search-results-img"src={ "//images.igdb.com/igdb/image/upload/t_cover_small/" + url + ".jpg" } />
 								</Link>
-							</h3>
-							<h3>{ i in searchResults ? searchResults[i].genres : null }</h3>
-						</div>
-					</li>
-						);
-				}
-			}
+							</div>
+							<div className="search-results-info-container">
+								<h3>
+									<Link
+									className="search-results-link"
+									to={`/game-profile/?${searchResults[i].name}`}
+									onClick={ () => this.watchSelectedGameProfile( i in searchResults ? i : null ) }>
+										{ i in searchResults ? searchResults[i].name : null }{" (" + releaseDateDisplay + ")"}
+									</Link>
+								</h3>
+								<h3>{ i in searchResults ? genresList.join(", ") : null }</h3>
+							</div>
+						</li>
+					);
+				};
+			};
 
 		return (
 
@@ -97,13 +96,13 @@ export class SearchResults extends React.Component {
 					</section>
 				</div>
 			</div>
-		)
+		);
 	};
-}
+};
 
 const mapStateToProps = state => ({
 	searchResults: state.searchResults,
 	searchTerm: state.searchTerm
-})
+});
 
 export default connect(mapStateToProps)(SearchResults);

@@ -6,7 +6,7 @@ import './alternative-names-section.css';
 export class AlternativeNamesSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const alternativeNamesList = gameProfile.alternative_names.map((alternativeName) => <li>{alternativeName.name}</li>);
+		const alternativeNamesList = "alternative_names" in gameProfile ? gameProfile.alternative_names.map((alternativeName) => <li>{alternativeName.name}</li>) : null;
 		
 		return(
 

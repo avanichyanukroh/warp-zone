@@ -1,13 +1,16 @@
 import React from 'react';
 import './login-form.css';
+import { connect } from 'react-redux';
 import { loggedInUser } from '../../../actions';
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
 	constructor(props) {
 	super(props);
+
 	this.state = {
-		username: '',
-		password: ''
+		username: "",
+		password: "",
+		errorDisplay: false
 	};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -28,15 +31,14 @@ export default class LoginForm extends React.Component {
 
 
 	handleSubmit(event) {
-		alert("login complete");
 		event.preventDefault();
-		const loginUsername = document.getElementById("login-username").value;
-		const loginPassword = document.getElementById("login-password").value;
+		const loginUsername = this.state.username;
+		const loginPassword = this.state.password;
 		const user = {
 			username: loginUsername,
 			password: loginPassword
 		};
-			fetch("http://localhost:8000/api/login", {
+			fetch("http://localhost:8000/login", {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -49,16 +51,33 @@ export default class LoginForm extends React.Component {
 					return res.json();
 				})
 				.then(data => {
-				console.log(data);
-				this.props.dispatch(loggedInUser(data.user.username));
+					console.log(data);
+					this.props.dispatch(loggedInUser(data.user.username, data.user));
+					this.setState({
+						username: "",
+						password: "",
+					});
 			})
 				.catch(err => {
 					console.log(err);
-				})
-		}
+					this.setState({
+						username: "",
+						password: "",
+						errorDisplay: true
+					});
+				});
+		};
 
 	render() {
+
+		function renderErrorDisplay() {
+			return (
+					<p className="username-password-error-text">Username and password was invalid, please try again.</p>
+				);
+		};
+
 		return (
+
 			<div className="login-form-container">
 			<form className="login-form" onSubmit={this.handleSubmit}>
 				<h3 className="login-form-title">Login Form</h3>
@@ -81,14 +100,22 @@ export default class LoginForm extends React.Component {
 						id="login-password"
 						className="login-form-input"
 						name="password"
-						type="text"
+						type="password"
 						value={this.state.password}
 						onChange={this.handleChange} 
 						/>
 				</label>
+				{this.state.errorDisplay ? renderErrorDisplay() : null}
 				<input className="form-submit-btn" type="submit" value="Submit" />
 			</form>
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	searchResults: state.searchResults,
+	searchTerm: state.searchTerm
+})
+
+export default connect(mapStateToProps)(LoginForm);

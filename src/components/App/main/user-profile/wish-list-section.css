@@ -2,6 +2,20 @@
 	padding: 15px;
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
+    text-align: center;
+}
+
+.delete-wishlist-icon {
+	color: white;
+	margin-top: 5px;
+	float: right;
+	margin-right: -8px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.delete-wishlist-icon:hover {
+	color: #1BC0FF;
 }
 
 .wish-list-container {
@@ -24,14 +38,15 @@
 }
 
 .wish-list-game-cover-container {
-	display: inline-block;
 	height: auto;
-	width: 30%;
+	border: 1px solid black;
+	text-align: center;
+	background: url("https://www.designyourway.net/diverse/darkpat/wallpaper_800x600_1336.jpg");
 }
 
 .wish-list-game-cover {
-	display: inline-block;
-	height: auto;
+	min-height: auto;
+	max-height: 154px;
 	width: auto;
 }
 
@@ -39,13 +54,26 @@
 	display: inline-block;
 	vertical-align: top;
 	height: auto;
-	width: 70%;
-	padding: 10px;
+}
+
+.wishListLabel {
+	display: inline-block;
+}
+
+.wishListInfo {
+	margin-bottom: 10px;
 }
 
 .wish-list-game-title {
 	text-align: center;
 	margin-bottom: 25px;
+}
+.wish-list-link {
+	color: white;
+	text-decoration: none;
+}
+.wish-list-link:hover {
+	color: #1BC0FF;
 }
 
 .wish-list-prices-container {
@@ -72,3 +100,4 @@
 .wish-list-amazon-price-list {
 	color: yellow;
 }
+

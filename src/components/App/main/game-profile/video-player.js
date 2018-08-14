@@ -6,10 +6,12 @@ import './video-player.css';
 export class VideoPlayer extends React.Component {
 
 	render() {
-		const gameProfile = this.props.gameProfile;
-		const videoPlayerUrl = "https://www.youtube.com/embed/" + `${ "videos" in gameProfile ? gameProfile.videos[0] : null }` + "?autoplay=1";
+		const {gameProfile} = this.props;
+		const gameUrl = "videos" in gameProfile && !(gameProfile.videos === null) ? gameProfile.videos[0].video_id : null;
+		const videoPlayerUrl = "https://www.youtube.com/embed/" + gameUrl + "?autoplay=1&mute=1";
 		
-		return(
+		return (
+
 			<div className="video-player-container">
 				<iframe 
 					className="col-12 video-player"

@@ -11,6 +11,7 @@
 	box-shadow: 4px 4px 15px black;
 	outline: none;
 	padding: 20px;
+	z-index: 5;
 }
 
 .overlay-modal {
@@ -20,6 +21,7 @@
 	right: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 5;
 }
 
 .signup-login-btn {
@@ -29,13 +31,21 @@
 	border-radius: 4px;
 	margin-left: 10px;
 	box-shadow: 2px 2px 8px black;
-	cursor:pointer;
+	cursor: pointer;
+}
+
+.signup-login-btn:hover {
+	background-color: #1BC0FF;
 }
 
 .close-modal-wrapper {
 	text-align: right;
 }
 
-.fa-times {
+.exit-modal-icon {
 	color: white;
+}
+
+.exit-modal-icon:hover {
+	color: #1BC0FF;
 }

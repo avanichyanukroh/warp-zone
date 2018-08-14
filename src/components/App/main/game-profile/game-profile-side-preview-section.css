@@ -9,7 +9,8 @@
 }
 
 .game-cover {
-	height: auto;
+	min-height: auto;
+	max-height: 358px;
 }
 
 .side-preview-section-info-container {

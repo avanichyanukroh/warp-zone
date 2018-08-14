@@ -9,6 +9,7 @@ import UserProfileSideContentSection from './user-profile-side-content-section';
 export default function UserProfile(props) {
 
 	return (
+
 		<div className="user-profile-container">
 			<div className="row user-profile-info-container">
 				<UserProfileMainInfoSection />

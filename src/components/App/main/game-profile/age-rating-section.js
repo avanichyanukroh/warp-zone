@@ -12,8 +12,8 @@ export class AgeRatingSection extends React.Component {
 			<div className="side-content-section-container">
 				<h3>Age Rating</h3>
 				<br/><br/>
-				<span>{gameProfile.esrb.rating}</span>
-				<span>{gameProfile.pegi.rating}</span>
+				<span>{"esrb" in gameProfile ? gameProfile.esrb.rating : null}</span>
+				<span>{"pegi" in gameProfile ? gameProfile.pegi.rating: null}</span>
 			</div>
 		)
 	};

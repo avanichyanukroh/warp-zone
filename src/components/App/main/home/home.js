@@ -25,6 +25,7 @@ export class Home extends React.Component {
 	resetRedirect() {
 		this.props.dispatch(resetRedirect());
 	}
+	
 	render() {
 
 		return (

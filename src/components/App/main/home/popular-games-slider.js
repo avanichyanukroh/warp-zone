@@ -1,7 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
-import { renderHome } from '../../../../actions';
+import { selectedGameProfileToRender } from '../../../../actions';
 import './popular-games-slider.css';
 import '../../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../../node_modules/slick-carousel/slick/slick-theme.css';
@@ -74,6 +75,7 @@ export class PopularGamesSlider extends React.Component {
 		};
 
 		this.loadSlider = this.loadSlider.bind(this);
+		this.watchSelectedGameProfile = this.watchSelectedGameProfile.bind(this);
 	}
 
 	componentDidMount() {
@@ -81,39 +83,38 @@ export class PopularGamesSlider extends React.Component {
 	};
 
 	loadSlider() {
-let genreMap = {};
-for (let i = 0; i <= 0; i ++) {
-
 		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		// const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=name,cover,genres,popularity&order=popularity:desc";
-		const IGDB_URL = "https://api-endpoint.igdb.com/collections/" + i + "?fields=name"
+		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=id,name,url,summary,storyline,collection,rating,popularity,total_rating,total_rating_count,rating_count,developers,publishers,game_engines,category,time_to_beat,player_perspectives,game_modes,themes,genres,first_release_date,platforms,release_dates,alternative_names,screenshots,videos,cover,esrb,pegi,websites&order=popularity:desc";
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
-				"user-key": '15870042b514b393825fc09f6b04056b',
+				"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
 				"accept": 'application/json'
 			}
 		})
 		.then(res => {return res.json()})
-		// .then(data => {
-		// 	let itemsList = [];
-
-		// 	data.map(item => {
-		// 		if ("name" in item && "cover" in item && "genres" in item) {
-		// 			itemsList.push(item);
-		// 		}
-		// 	});
-		// 	this.setState({items: itemsList});
-		// })
 		.then(data => {
-			genreMap[i] = data[0].name;
+			let itemsList = [];
+
+			data.map(item => {
+				if ("name" in item && "cover" in item && "genres" in item) {
+					itemsList.push(item);
+				}
+			});
+			this.setState({items: itemsList});
 		})
-		.then(()=>console.log(genreMap))
 		.catch(err => {
 			console.log(err);
 		});
+};
+
+	watchSelectedGameProfile(key) {
+		if (!(key == null)) {
+			let selectedGameProfile = this.state.items[`${key}`];
+			console.log(selectedGameProfile);
+			this.props.dispatch(selectedGameProfileToRender(selectedGameProfile));
+		}
 	};
-}
 
 	render() {
 		
@@ -124,16 +125,22 @@ for (let i = 0; i <= 0; i ++) {
 
 				let url = i in items ? items[i].cover.cloudinary_id : null;
 				sliderItems.push(
-				<div className="slider-item-container" key={ i in items ? items[i].id : null }>
-					<div className="popular-slider-img-container">
-						<img className="popular-slider-img"src={ "//images.igdb.com/igdb/image/upload/t_cover_big/" + url + ".jpg" } />
+					<div className="slider-item-container" key={ i in items ? items[i].id : null }>
+						<div className="popular-slider-img-container">
+							<Link
+								className="popular-slider-link"
+								to="/game-profile"
+								key={ i in items ? i : null }
+								onClick={ () => this.watchSelectedGameProfile( i in items ? i : null ) }>
+								<img className="popular-slider-img" src={ "//images.igdb.com/igdb/image/upload/t_cover_big/" + url + ".jpg" } />
+							</Link>
+						</div>
+						<div className="slider-item-info-container">
+							<p className="slider-item-title">{ i in items ? items[i].name : null }</p>
+							<p>{ i in items ? items[i].genres : null }</p>
+						</div>
 					</div>
-					<div className="slider-item-info-container">
-						<p className="slider-item-title">{ i in items ? items[i].name : null }</p>
-						<p>{ i in items ? items[i].genres : null }</p>
-					</div>
-				</div>
-					);
+				);
 			}
 		
 

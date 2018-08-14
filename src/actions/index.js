@@ -34,9 +34,21 @@ export const priceListToRender = (gamePriceListExactMatch, gamePriceListSimilarM
 });
 
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
-export const loggedInUser = (username) => ({
+export const loggedInUser = (username, user) => ({
     type: LOGGED_IN_USER,
-    loggedInUser: username
+    loggedInUser: username,
+    userProfile: user
+});
+
+export const LOG_OUT_USER = 'LOG_OUT_USER';
+export const logOutUser = () => ({
+    type: LOG_OUT_USER
+});
+
+export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
+export const updateUserProfile = (userProfile) => ({
+    type: UPDATE_USER_PROFILE,
+    userProfile: userProfile
 });
 
 export const ADD_TO_WISH_LIST = 'ADD_TO_WISH_LIST';

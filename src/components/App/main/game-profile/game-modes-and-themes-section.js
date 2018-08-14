@@ -2,23 +2,36 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../../float-grid.css';
 import './game-modes-and-themes-section.css';
+import { game_modes, themes } from '../../IGDB-id-converter.js';
 
-export class GameModesAndThemesSection extends React.Component {
+class GameModesAndThemesSection extends React.Component {
 	render() {
-		const gameProfile = this.props.gameProfile;
-		const gameModesList = gameProfile.game_modes.map((gameMode) => <li key={gameMode}>{gameMode}</li>);
-		const themesList = gameProfile.themes.map((theme) => <li key={theme}>{theme}</li>);
+		const { gameProfile } = this.props;
+		const gameModesList = [];
+		const themesList = [];
+
+		const convertGameModesList = "game_modes" in gameProfile ? gameProfile.game_modes.map((gameMode) => {
+			gameModesList.push(
+				<li key={gameMode}>{game_modes[gameMode]}</li>
+				);
+			}) : null;
+
+		const convertThemesList = "themes" in gameProfile ? gameProfile.themes.map((theme) => {
+			themesList.push(
+				<li key={theme}>{themes[theme]}</li>
+				)
+			}) : null;
 		
-		return(
+		return (
 
 			<div className="side-content-section-container">
 				<label>Game Modes:</label>
 				<br/><br/>
-				<p>{gameModesList}</p>
-				<br/>
+				{gameModesList}
+				<br/><br/>
 				<label>Themes:</label>
 				<br/><br/>
-				<p>{themesList}</p>
+				{themesList}
 			</div>
 
 		)

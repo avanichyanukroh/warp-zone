@@ -1,4 +1,4 @@
-import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER, PRICE_LIST_TO_RENDER } from '../actions';
+import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER, PRICE_LIST_TO_RENDER, LOG_OUT_USER, UPDATE_USER_PROFILE } from '../actions';
 
 const initialState = {
 
@@ -14,7 +14,6 @@ const initialState = {
 		"url": "",
 		"summary": "",
 		"storyline": "",
-		"collection": 0,
 		"rating": 0,
 		"popularity": 0,
 		"total_rating": 0,
@@ -93,9 +92,13 @@ const initialState = {
 
 		username: "",
 		password: "",
-		real_name: "",
+		nickname: "",
+		user_portrait: "",
 		user_profile_summary: "",
-		wish_list: [{}]
+		platform: [],
+		genre_of_interest: [],
+		wish_list: [{}],
+		custom_list:[{}]
 	}
 }
 
@@ -138,10 +141,23 @@ export const warpZoneReducer = (state = initialState, action) => {
 
 	if (action.type === LOGGED_IN_USER) {
 		return Object.assign({}, state, {
-			loggedInUser: action.loggedInUser
+			loggedInUser: action.loggedInUser,
+			userProfile: action.userProfile
 		});
 	};
 
+	if (action.type === LOG_OUT_USER) {
+		return Object.assign({}, state, {
+			loggedInUser: undefined,
+			userProfile: undefined
+		});
+	};
+
+	if (action.type === UPDATE_USER_PROFILE) {
+		return Object.assign({}, state, {
+			userProfile: action.userProfile
+		});
+	};
 
 	return state;
 };

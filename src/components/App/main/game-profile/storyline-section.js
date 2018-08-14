@@ -31,7 +31,7 @@ export class StorylineSection extends React.Component {
 		let longDescription;
 
 		if (!(gameProfile.storyline === "")) {
-			shortDescription =  gameProfile.storyline.slice(0,339) + "...";
+			shortDescription =  "storyline" in gameProfile && (!(gameProfile.storyline === null)) ? gameProfile.storyline.slice(0,339) + "..." : null;
 			longDescription = gameProfile.storyline;
 		}
 

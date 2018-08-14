@@ -26,3 +26,7 @@
 	box-shadow: 2px 2px 8px black;
 	width: 100%
 }
+
+.username-password-error-text {
+	color: red;
+}

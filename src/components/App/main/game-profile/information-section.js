@@ -2,16 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../../float-grid.css';
 import './information-section.css';
+import { game_modes, themes } from '../../IGDB-id-converter.js';
 
-export class InformationSection extends React.Component {
+class InformationSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const developersList = gameProfile.developers.map((developer) => <li key={developer}>{developer}</li>);
-		const publishersList = gameProfile.publishers.map((publisher) => <li key={publisher}>{publisher}</li>);
-		const gameEnginesList = gameProfile.game_engines.map((gameEngine) => <li key={gameEngine}>{gameEngine}</li>);
-		const playerPerspectivesList = gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{playerPerspective}</li>);
+		const developersList = "developers" in gameProfile && (!(gameProfile.developers === null)) ? gameProfile.developers.map((developer) => <li key={developer}>{developer}</li>) : null;
+		const publishersList = "publishers" in gameProfile && (!(gameProfile.publishers === null)) ? gameProfile.publishers.map((publisher) => <li key={publisher}>{publisher}</li>) : null;
+		const gameEnginesList = "game_engines" in gameProfile && (!(gameProfile.game_engines === null)) ? gameProfile.game_engines.map((gameEngine) => <li key={gameEngine}>{gameEngine}</li>) : null;
+		const playerPerspectivesList = "player_perspectives" in gameProfile && (!(gameProfile.player_perspectives === null)) ? gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{playerPerspective}</li>) : null;
 		
-		return(
+		return (
 
 			<div className="side-content-section-container">
 				<label>Title:</label>

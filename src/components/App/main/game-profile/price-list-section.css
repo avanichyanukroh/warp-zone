@@ -1,4 +1,9 @@
-
+.price-list-section-container {
+	background-color: rgba(0, 0, 0, 0.3);
+	max-height: 600px;
+	overflow: auto;
+	padding: 5px;
+}
 
 .price-list-item-container {
 	padding: 10px;

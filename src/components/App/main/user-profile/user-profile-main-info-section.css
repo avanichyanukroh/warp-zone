@@ -1,7 +1,3 @@
-.user-profile-main-info-section-container {
-
-}
-
 .profile-portrait {
 	height: 200px;
 	width: 200px;
@@ -10,7 +6,11 @@
 .user-profile-main-info-section-wrapper {
 	display: inline-block;
 	vertical-align: top;
-	padding: 20px;
+	margin-left: 20px;
+}
+
+.user-profile-nickname {
+	padding-top: 5px;
 }
 
 .user-profile-main-info-summary {

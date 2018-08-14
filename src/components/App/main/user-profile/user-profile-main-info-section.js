@@ -1,24 +1,35 @@
 import React from 'react';
 import '../../float-grid.css';
 import "./user-profile-main-info-section.css";
+import { connect } from 'react-redux';
 
-export default function UserProfileMainInfoSection(props) {
+class UserProfileMainInfoSection extends React.Component {
+	constructor(props) {
+		super(props);
+	};
 
-	return (
+	render() {
+		const { userProfile } = this.props;
 
-		<div className="col-8 user-profile-main-info-section-container">
-			<img src="" className="profile-portrait" />
-			<div className="user-profile-main-info-section-wrapper">
-				<div className="username-display">
-					<h2>Username</h2>
-				</div>
-				<div className="user-profile-real-name">
-					<p>Real name</p>
-				</div>
-				<div className="user-profile-main-info-summary">
-					<p>User profile summary</p>
+		return (
+
+			<div className="col-8 user-profile-main-info-section-container">
+				<img src={userProfile.user_portrait} className="profile-portrait" />
+				<div className="user-profile-main-info-section-wrapper">
+					<h2 className="username-display">{userProfile.username}</h2>
+					<p className="user-profile-nickname">{userProfile.nickname}</p>
+					<div className="user-profile-main-info-summary">
+						<p>{userProfile.user_profile_summary}</p>
+					</div>
 				</div>
 			</div>
-		</div>
 		);
-}
+	};
+};
+
+const mapStateToProps = state => ({
+	userProfile: state.userProfile
+	
+});
+
+export default connect(mapStateToProps)(UserProfileMainInfoSection);
