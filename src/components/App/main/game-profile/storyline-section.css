@@ -3,3 +3,12 @@
 	background-color: rgba(0, 0, 0, 0.3);
 	overflow: auto;
 }
+
+#read-more-storyline {
+	color: deepskyblue;
+	cursor: pointer;
+}
+
+#read-more-storyline:hover {
+	color: cyan;
+}

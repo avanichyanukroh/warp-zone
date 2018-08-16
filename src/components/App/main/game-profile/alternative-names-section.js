@@ -6,14 +6,15 @@ import './alternative-names-section.css';
 export class AlternativeNamesSection extends React.Component {
 	render() {
 		const gameProfile = this.props.gameProfile;
-		const alternativeNamesList = "alternative_names" in gameProfile ? gameProfile.alternative_names.map((alternativeName) => <li>{alternativeName.name}</li>) : null;
+		let alternativeNamesList = []; 
+		"alternative_names" in gameProfile ? gameProfile.alternative_names.map((alternativeName) => alternativeNamesList.push(alternativeName.name)) : "No alternative names";
 		
 		return(
 
 			<div className="side-content-section-container">
 				<label>Alternative Names:</label>
 				<br/><br/>
-				<p>{alternativeNamesList}</p>
+				<p>{alternativeNamesList.join(", ")}</p>
 			</div>
 		)
 	};

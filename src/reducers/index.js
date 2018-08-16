@@ -106,7 +106,7 @@ export const warpZoneReducer = (state = initialState, action) => {
 	let data;
 	if (action.type === RENDER_HOME) {
 		return Object.assign({}, state, {
-			popularGamesList: action.data,
+			popularGamesList: action.popularGamesList,
 			redirectToSearchResults: false
 		});
 	};

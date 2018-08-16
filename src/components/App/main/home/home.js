@@ -35,7 +35,7 @@ export class Home extends React.Component {
 				<h2 className="home-greeting-title"> Welcome!</h2>
 					<section className="col-12 home-section-container">
 					<h2 className="home-section-title">Popular games right now</h2>
-
+					<PopularGamesSlider />
 					</section>
 				</div>
 			</div>

@@ -7,51 +7,42 @@ export class StorylineSection extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.renderShortDescription = this.renderShortDescription.bind(this);
+		this.state = {
+			storyline: "storyline" in this.props.gameProfile && (!(this.props.gameProfile.storyline === null)) ? this.props.gameProfile.storyline.slice(0,339) + "...": "Storyline not available."
+		};
 		this.switchStorylineDescription = this.switchStorylineDescription.bind(this);
 	};
 
-	renderShortDescription() {
-		let shortDescription;
-		let longDescription;
-
-		return ({shortDescription});
-	};
-
 	switchStorylineDescription(event) {
-		event.preventDefault();
-		let longDescription;
-		document.getElementById("storyline").innerText = longDescription;
+		this.setState({storyline: this.props.gameProfile.storyline});
 		document.getElementById("read-more-storyline").style.display = "none";
 	};
 
 	render() {
-		const gameProfile = this.props.gameProfile;
-		let shortDescription;
-		let longDescription;
+		if (this.state.storyline === "Storyline not available.") {
+			return (
 
-		if (!(gameProfile.storyline === "")) {
-			shortDescription =  "storyline" in gameProfile && (!(gameProfile.storyline === null)) ? gameProfile.storyline.slice(0,339) + "..." : null;
-			longDescription = gameProfile.storyline;
+				<div className="main-content-section-container">
+					<h3>Storyline</h3>
+					<br/>
+					<p id="storyline">{this.state.storyline}</p>
+				</div>
+			);
 		}
-
 		else {
-			shortDescription = "storyline unavailable";
-			longDescription = "storyline unavailable";
-			}
-		
-		return(
+			return (
 
-			<div className="main-content-section-container">
-				<h3>Storyline</h3>
-				<br/>
-				<p id="storyline">{this.renderShortDescription}</p>
-				<span 
-					id="read-more-storyline"
-					onClick={() => this.switchStorylineDescription()}>
-					Read more</span>
-			</div>
-		)
+				<div className="main-content-section-container">
+					<h3>Storyline</h3>
+					<br/>
+					<p id="storyline">{this.state.storyline}</p>
+					<span 
+						id="read-more-storyline"
+						onClick={() => this.switchStorylineDescription()}>
+						Read more</span>
+				</div>
+			);
+		};
 	};
 }
 

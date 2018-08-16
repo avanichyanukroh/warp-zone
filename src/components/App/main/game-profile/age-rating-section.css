@@ -7,3 +7,9 @@
 label {
 	font-weight: bold;
 }
+
+.esrb-img, .pegi-img {
+	margin-left: 20px;
+	height: 150px;
+	width: auto;
+}

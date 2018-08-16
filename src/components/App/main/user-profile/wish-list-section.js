@@ -36,8 +36,8 @@ class WishListSection extends React.Component {
 					let mappedGenres = genresToMap.map(genre => {genresList.push(genres[genre])});
 
 				wishListItems.push(
-					<li className="wish-list-item row">
-						<i class="fas fa-times fa-lg delete-wishlist-icon"></i>
+					<li className="wish-list-item row" key={ i in userProfile.wish_list ? i : null }>
+						<i className="fas fa-times fa-lg delete-wishlist-icon"></i>
 						<div className="wish-list-game-cover-container col-3">
 
 

@@ -46,6 +46,7 @@ export class PriceListSection extends React.Component {
 		const { priceListExactMatch, priceListSimilarMatch } = this.props;
 		let priceListExactMatchToRender = [];
 		let priceListSimilarMatchToRender = [];
+
 		if (priceListExactMatch.length > 0) {
 
 			for (let i = 0; i < priceListExactMatch.length; i++) {
@@ -59,8 +60,8 @@ export class PriceListSection extends React.Component {
 				priceListExactMatchToRender.push(
 					<div className="price-list-item-container" key={ i in priceListExactMatch ? i : null }>
 						<h4 className="price-list-item-title">{priceListExactMatch[i]["product-name"]}</h4>
-						<label>Used Price:</label> <p>{usedPriceDisplay}</p>
-						<label>New Price:</label> <p>{newPriceDisplay}</p>
+						<label>Used Price:</label> <p className="price-display">{usedPriceDisplay}</p>
+						<label>New Price:</label> <p className="price-display">{newPriceDisplay}</p>
 						<label>Amazon Price List:</label> <a className="amazon-links" href={amazonPriceListLink}>Check Amazon</a>
 					</div>
 				);
@@ -80,9 +81,9 @@ export class PriceListSection extends React.Component {
 				priceListSimilarMatchToRender.push(
 					<div className="price-list-item-container" key={ i in priceListSimilarMatch ? i : null }>
 						<h4 className="price-list-item-title">{priceListSimilarMatch[i]["product-name"]}</h4>
-						<label>Used Price:</label> <p>{usedPriceDisplay}</p>
-						<label>New Price:</label> <p>{newPriceDisplay}</p>
-						<label>Amazon Price List:</label> <a className="amazon-links" href={amazonPriceListLink}>Check Amazon</a>
+						<label>Used Price:</label> <p className="price-display">{usedPriceDisplay}</p>
+						<label>New Price:</label> <p className="price-display">{newPriceDisplay}</p>
+						<label>Amazon Price List:</label> <a className="amazon-links" href={amazonPriceListLink} target="_blank">Check Amazon</a>
 					</div>
 				);
 			};
@@ -92,12 +93,12 @@ export class PriceListSection extends React.Component {
 
 			<div className="price-list-section-container">
 				<div className="price-list-exact-section-container">
-					<h3>Price List for "{gameProfile.name}"</h3>
+					<div className="price-list-description-title"><h3>Price List for "{gameProfile.name}"</h3></div>
 					<br/>
 					{priceListExactMatchToRender.length > 0 ? priceListExactMatchToRender : <p>None available</p>}
 				</div>
 				<div className="price-list-similar-section-container">
-					<h3>Price List similar to "{gameProfile.name}"</h3>
+					<div className="price-list-description-title"><h3>Price List similar to "{gameProfile.name}"</h3></div>
 					<br/>
 					{priceListSimilarMatchToRender.length > 0 ? priceListSimilarMatchToRender : <p>None available</p>}
 				</div>

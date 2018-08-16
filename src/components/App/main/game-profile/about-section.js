@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import '../../float-grid.css';
 import './about-section.css';
 import { updateUserProfile } from '../../../../actions';
+import { genres, platforms  } from '../../IGDB-id-converter.js';
 
 export class AboutSection extends React.Component {
 	constructor(props) {
@@ -40,7 +41,7 @@ export class AboutSection extends React.Component {
 	};
 
 	handleAddToWishlist() {
-		const gameProfile = this.props.gameProfile;
+		const { gameProfile } = this.props;
 		gameProfile.username = this.props.userProfile.username;
 		fetch("http://localhost:8000/addToWishlist", {
 			method: 'POST',
@@ -57,6 +58,8 @@ export class AboutSection extends React.Component {
 		.then(userProfile => {
 			console.log(userProfile);
 			this.props.dispatch(updateUserProfile(userProfile));
+			document.getElementById("add-game-to-wishlist-btn").style.display = "none";
+			document.getElementById("add-game-to-wishlist-feedback").style.display = "block";
 		})
 		.catch(err => {
 			console.log(err);
@@ -65,6 +68,18 @@ export class AboutSection extends React.Component {
 
 	render() {
 		const { gameProfile, loggedInUser } = this.props;
+
+		let genresList = [];
+
+		"genres" in gameProfile && !(gameProfile.genres === null) && !(gameProfile.genres === undefined) ? 
+		gameProfile.genres.map(genre => genresList.push(genres[genre]))
+		: "Genres unavailable";
+
+		let platformsList = [];
+
+		"platforms" in gameProfile && !(gameProfile.platforms === null) && !(gameProfile.platforms === undefined) ?
+		gameProfile.platforms.map(platform => platformsList.push(platforms[platform]))
+		: "Not yet released on a platform";
 
 		if ("summary" in gameProfile) {
 			const shortDescription =  gameProfile.summary.slice(0,339) + "...";
@@ -81,9 +96,10 @@ export class AboutSection extends React.Component {
 			return (
 
 				<div className="about-section-container">
-					<button className="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
-					<p className="about-info">Genre: { "genres" in gameProfile ? gameProfile.genres : "Genres unavailable" }</p>
-					<p className="about-info">Platform: { "platforms" in gameProfile ? gameProfile.platforms : "Not yet released on a platform" }</p>
+					<button className="add-game-to-wishlist-btn" id="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
+					<div id="add-game-to-wishlist-feedback">Added to wishlist</div>
+					<p className="about-info">Genre: {genresList.join(", ")}</p>
+					<p className="about-info">Platform: {platformsList.join(", ")}</p>
 					<p 
 						className="about-summary"
 						id="about-summary">
@@ -103,8 +119,8 @@ export class AboutSection extends React.Component {
 
 				<div className="about-section-container">
 					<button className="add-game-to-wishlist-btn" onClick={() => {alert("Please sign in to add game to wishlist.")}}><h2 className="addition-text">+</h2> to wishlist</button>
-					<p className="about-info">Genre: { "genres" in gameProfile ? gameProfile.genres : "Genres unavailable" }</p>
-					<p className="about-info">Platform: { "platforms" in gameProfile ? gameProfile.platforms : "Not yet released on a platform" }</p>
+					<p className="about-info">Genre: {genresList.join(", ")}</p>
+					<p className="about-info">Platform: {platformsList.join(", ")}</p>
 					<p 
 						className="about-summary"
 						id="about-summary">

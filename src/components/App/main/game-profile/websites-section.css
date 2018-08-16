@@ -7,3 +7,13 @@
 label {
 	font-weight: bold;
 }
+
+.website-links {
+	text-decoration: none;
+	display: block;
+	color: deepskyblue;
+}
+
+.website-links:hover {
+	color: cyan;
+}

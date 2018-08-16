@@ -2,15 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../../float-grid.css';
 import './information-section.css';
-import { game_modes, themes } from '../../IGDB-id-converter.js';
+import { game_modes, themes, player_perspectives  } from '../../IGDB-id-converter.js';
 
 class InformationSection extends React.Component {
 	render() {
-		const gameProfile = this.props.gameProfile;
+		
+		const { gameProfile } = this.props;
 		const developersList = "developers" in gameProfile && (!(gameProfile.developers === null)) ? gameProfile.developers.map((developer) => <li key={developer}>{developer}</li>) : null;
 		const publishersList = "publishers" in gameProfile && (!(gameProfile.publishers === null)) ? gameProfile.publishers.map((publisher) => <li key={publisher}>{publisher}</li>) : null;
-		const gameEnginesList = "game_engines" in gameProfile && (!(gameProfile.game_engines === null)) ? gameProfile.game_engines.map((gameEngine) => <li key={gameEngine}>{gameEngine}</li>) : null;
-		const playerPerspectivesList = "player_perspectives" in gameProfile && (!(gameProfile.player_perspectives === null)) ? gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{playerPerspective}</li>) : null;
+		const playerPerspectivesList = "player_perspectives" in gameProfile && (!(gameProfile.player_perspectives === null)) ? gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{player_perspectives[playerPerspective]}</li>) : null;
 		
 		return (
 
@@ -26,18 +26,6 @@ class InformationSection extends React.Component {
 				<label>Publishers:</label>
 				<br/><br/>
 				<p>{publishersList}</p>
-				<br/><br/>
-				<label>Series:</label>
-				<br/><br/>
-				<p>{gameProfile.collection}</p>
-				<br/><br/>
-				<label>Game Engines:</label>
-				<br/><br/>
-				<p>{gameEnginesList}</p>
-				<br/><br/>
-				<label>Game category:</label>
-				<br/><br/>
-				<p>{gameProfile.category}</p>
 				<br/><br/>
 				<label>Player perspective:</label>
 				<br/><br/>

@@ -1,6 +1,6 @@
 .price-list-section-container {
 	background-color: rgba(0, 0, 0, 0.3);
-	max-height: 600px;
+	max-height: 1200px;
 	overflow: auto;
 	padding: 5px;
 }
@@ -9,9 +9,24 @@
 	padding: 10px;
 	border: 1px black solid;
 }
+
+.price-list-description-title {
+	margin-bottom: 15px;
+}
+
+.price-list-exact-section-container, .price-list-similar-section-container {
+	margin-bottom: 30px;
+}
+
 .price-list-item-title {
 	text-align: center;
 }
+
+.price-display {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .amazon-links {
 	color: deepskyblue;
 	cursor: pointer;

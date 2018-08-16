@@ -123,7 +123,7 @@ class NavBar extends React.Component {
 						</div>
 						<div className="username-display-container">
 							<Link className="user-profile-link" to="/user-profile">{ !(userProfile === undefined) ? userProfile.username : null}</Link>
-							<Link className="user-log-out-link" to="/" onClick={()=> {this.handleLogOut()}}><i class="fas fa-sign-out-alt fa-lg"></i></Link>
+							<Link className="user-log-out-link" to="/" onClick={()=> {this.handleLogOut()}}><i className="fas fa-sign-out-alt fa-lg"></i></Link>
 						</div>
 						<div className="clear-both"></div>
 					</nav>

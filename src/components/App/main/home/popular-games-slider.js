@@ -6,6 +6,7 @@ import { selectedGameProfileToRender } from '../../../../actions';
 import './popular-games-slider.css';
 import '../../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../../node_modules/slick-carousel/slick/slick-theme.css';
+import { genres } from '../../IGDB-id-converter.js';
 
 const settings = {
 			dots: true,
@@ -66,7 +67,7 @@ function PrevArrow(props) {
   );
 };
 
-export class PopularGamesSlider extends React.Component {
+class PopularGamesSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -117,10 +118,11 @@ export class PopularGamesSlider extends React.Component {
 	};
 
 	render() {
-		
+
 		const gameProfile = this.props.gameProfile;
 		const { items }  = this.state;
 		let sliderItems = [];
+
 			for (let i = 0; i < items.length; i++) {
 
 				let url = i in items ? items[i].cover.cloudinary_id : null;
@@ -136,8 +138,14 @@ export class PopularGamesSlider extends React.Component {
 							</Link>
 						</div>
 						<div className="slider-item-info-container">
-							<p className="slider-item-title">{ i in items ? items[i].name : null }</p>
-							<p>{ i in items ? items[i].genres : null }</p>
+							<Link
+									className="popular-slider-link"
+									to="/game-profile"
+									key={ i in items ? i : null }
+									onClick={ () => this.watchSelectedGameProfile( i in items ? i : null ) }>
+								<p className="slider-item-title">{ i in items ? items[i].name : null }</p>
+							</Link>
+							<p>{ i in items ? genres[items[i].genres] : null }</p>
 						</div>
 					</div>
 				);

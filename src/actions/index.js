@@ -1,6 +1,7 @@
 export const RENDER_HOME = 'RENDER_HOME';
-export const renderHome = () => ({
-    type: RENDER_HOME
+export const renderHome = (data) => ({
+    type: RENDER_HOME,
+    popularGamesList: data
 });
 
 export const RENDER_USER_PROFILE = 'RENDER_USER_PROFILE';

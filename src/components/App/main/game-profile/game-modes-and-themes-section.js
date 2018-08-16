@@ -10,15 +10,15 @@ class GameModesAndThemesSection extends React.Component {
 		const gameModesList = [];
 		const themesList = [];
 
-		const convertGameModesList = "game_modes" in gameProfile ? gameProfile.game_modes.map((gameMode) => {
+		"game_modes" in gameProfile ? gameProfile.game_modes.map((gameMode) => {
 			gameModesList.push(
-				<li key={gameMode}>{game_modes[gameMode]}</li>
+				game_modes[gameMode]
 				);
 			}) : null;
 
-		const convertThemesList = "themes" in gameProfile ? gameProfile.themes.map((theme) => {
+		"themes" in gameProfile ? gameProfile.themes.map((theme) => {
 			themesList.push(
-				<li key={theme}>{themes[theme]}</li>
+				themes[theme]
 				)
 			}) : null;
 		
@@ -27,11 +27,11 @@ class GameModesAndThemesSection extends React.Component {
 			<div className="side-content-section-container">
 				<label>Game Modes:</label>
 				<br/><br/>
-				{gameModesList}
+				<p>{gameModesList.join(", ")}</p>
 				<br/><br/>
 				<label>Themes:</label>
 				<br/><br/>
-				{themesList}
+				<p>{themesList.join(", ")}</p>
 			</div>
 
 		)
