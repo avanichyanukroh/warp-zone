@@ -112,7 +112,6 @@ export const warpZoneReducer = (state = initialState, action) => {
 	};
 
 	if (action.type === RENDER_SEARCH_RESULTS) {
-		console.log(data);
 		return Object.assign({}, state, {
 			redirectToSearchResults: true,
 			searchResults: action.searchResults,
