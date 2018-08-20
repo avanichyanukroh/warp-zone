@@ -24,7 +24,7 @@ class WishListSection extends React.Component {
 	handleDeleteFromWishlist(_id) {
 	const idToDelete = {_id: _id, username: this.props.userProfile.username};
 	console.log(idToDelete);
-	fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/deleteFromWishList", {
+	fetch("https://warp-zone-api.herokuapp.com/deleteFromWishList", {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',

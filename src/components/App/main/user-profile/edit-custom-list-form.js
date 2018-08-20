@@ -41,7 +41,7 @@ class EditCustomListForm extends React.Component {
 			content: content
 		};
 
-		fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/editCustomList", {
+		fetch("https://warp-zone-api.herokuapp.com/editCustomList", {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

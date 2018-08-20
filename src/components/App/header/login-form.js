@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 			username: loginUsername,
 			password: loginPassword
 		};
-			fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/login", {
+			fetch("https://warp-zone-api.herokuapp.com/login", {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',

@@ -44,7 +44,7 @@ export class AboutSection extends React.Component {
 		const { gameProfile } = this.props;
 		gameProfile.username = this.props.userProfile.username;
 		console.log(gameProfile);
-		fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/addToWishlist", {
+		fetch("https://warp-zone-api.herokuapp.com/addToWishlist", {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
