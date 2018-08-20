@@ -1,14 +1,14 @@
-.registeration-form-container {
+.edit-user-profile-form-container {
 	background-color: #001F30;
-	min-width: 300px;
+	width: 350px;
 
 }
 
-.registeration-form-title {
+.edit-user-profile-form-title {
 	text-align: center;
 }
 
-.registeration-form-input {
+.edit-user-profile-form-input {
 	display: block;
 	margin: 10px auto;
 	height: 35px;

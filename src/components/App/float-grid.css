@@ -31,7 +31,7 @@
 }
 
 .col-3, .col-4, .col-6, .col-8, .col-9, .col-12 {
-	float: left;
+	float: right;
 
 	/* Gutters:
 	* Each column is padded by half-a-gutter on each side,
@@ -43,8 +43,11 @@
 	padding-right: 1.04166666%;*/
 }
 
+.col-3-alt, .col-4-alt, .col-8-alt {
+	float: left;
+}
 /* Mobile defaults */
-.col-3, .col-4, .col-6, .col-8, .col-9, .col-12 {
+.col-3, .col-4, .col-6, .col-8, .col-9, .col-12, .col-3-alt, .col-4-alt, .col-8-alt {
 	width: 100%;
 }
 
@@ -52,12 +55,12 @@
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
 	/* 3 columns, 3/12 in % */
-	.col-3 {
+	.col-3, .col-3-alt {
 		width: 25%;
 	}
 
 	/* 4 columns, 4/12 in % */
-	.col-4 {
+	.col-4, .col-4-alt {
 		width: 33.33%;
 	}
 
@@ -67,7 +70,7 @@
 	}
 
 	/* 4 columns, 4/12 in % */
-	.col-8 {
+	.col-8, .col-8-alt {
 		width: 66.66%;
 	}
 

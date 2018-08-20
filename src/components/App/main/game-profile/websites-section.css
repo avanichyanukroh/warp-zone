@@ -11,9 +11,10 @@ label {
 .website-links {
 	text-decoration: none;
 	display: block;
-	color: deepskyblue;
+	color: gold;
+	font-style: italic;
 }
 
 .website-links:hover {
-	color: cyan;
+	color: yellow;
 }

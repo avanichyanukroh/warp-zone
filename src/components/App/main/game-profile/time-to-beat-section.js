@@ -6,9 +6,8 @@ import './time-to-beat-section.css';
 export class TimeToBeatSection extends React.Component {
 	render() {
 		const { gameProfile } = this.props;
-		console.log(gameProfile.time_to_beat);
 		
-		return(
+		return (
 
 			<div className="side-content-section-container">
 				<h3>Time to beat</h3>

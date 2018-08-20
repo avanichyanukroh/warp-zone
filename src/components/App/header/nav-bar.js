@@ -46,7 +46,6 @@ class NavBar extends React.Component {
 				return res.json();
 			})
 			.then(data => {
-				console.log(data);
 				let itemsList = [];
 
 				data.map(item => {

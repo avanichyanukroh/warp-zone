@@ -19,14 +19,14 @@
 }
 
 .warp-icon-player-rating {
-	color: white;
+	color: gold;
 	margin-right: 15px;
 	text-shadow: 5px 5px 10px black;
 	z-index: 2;
 }
 
 .warp-icon-critic-rating {
-	color: white;
+	color: gold;
 	text-shadow: 5px 5px 10px black;
 	z-index: 2;
 }
@@ -39,7 +39,7 @@
 }
 
 .side-preview-section-info-text {
-	font-style: italic;
+	color: deepskyblue;
 }
 
 .side-preview-section-ratings-display-container {
@@ -53,7 +53,7 @@
 	display: inline-block;
 	width: 148px;
 	height: 130px;
-	padding-top: 20px;
+	padding-top: 10px;
 	text-align: center;
 }
 
@@ -62,10 +62,12 @@
 }
 
 .side-preview-section-rating-info {
+	font-size: 12px;
 	display: inline-block;
 	text-align: center;
 	height: 40px;
 	width: 156px;
-	margin-top: 20px;
+	margin-top: 15px;
 	color: white;
+	font-style: italic;
 }

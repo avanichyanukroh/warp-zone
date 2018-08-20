@@ -141,12 +141,12 @@ class RegisterationForm extends React.Component {
 			</form>
 			</div>
 		);
-	}
-}
+	};
+};
 
 const mapStateToProps = state => ({
 	searchResults: state.searchResults,
 	searchTerm: state.searchTerm
-})
+});
 
 export default connect(mapStateToProps)(RegisterationForm);

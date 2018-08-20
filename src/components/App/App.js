@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Link, Redirect, withRouter} from 'react-
 import {connect} from 'react-redux';
 import './App.css';
 import NavBar from './header/nav-bar';
+import NavBarMobile from './header/nav-bar-mobile';
+import MediaQuery from 'react-responsive';
 import Home from './main/home/home';
 import SearchResults from './main/search-results/search-results'
 import GameProfile from './main/game-profile/game-profile';
@@ -21,7 +23,12 @@ export class App extends React.Component {
 			<Router>
 				<div className="App">
 					<header className="App-header" role="banner">
-						<NavBar />
+						<MediaQuery query="(min-width: 640px)">
+							<NavBar className="NavBar" />
+						</MediaQuery>
+						<MediaQuery query="(max-width: 640px)">
+							<NavBarMobile className="NavBar-mobile" />
+						</MediaQuery>
 					</header>
 					<main role="main" id="main">
 						<Route exact path="/" component={Home} />

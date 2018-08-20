@@ -7,3 +7,7 @@
 label {
 	font-weight: bold;
 }
+
+.release-date-platform-display {
+	font-style: italic;
+}

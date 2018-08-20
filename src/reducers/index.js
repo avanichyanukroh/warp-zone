@@ -95,15 +95,14 @@ const initialState = {
 		nickname: "",
 		user_portrait: "",
 		user_profile_summary: "",
-		platform: [],
-		genre_of_interest: [],
+		platform: "",
+		genre_of_interest: "",
 		wish_list: [{}],
 		custom_list:[{}]
 	}
 }
 
 export const warpZoneReducer = (state = initialState, action) => {
-	let data;
 	if (action.type === RENDER_HOME) {
 		return Object.assign({}, state, {
 			popularGamesList: action.popularGamesList,
@@ -112,7 +111,6 @@ export const warpZoneReducer = (state = initialState, action) => {
 	};
 
 	if (action.type === RENDER_SEARCH_RESULTS) {
-		console.log(data);
 		return Object.assign({}, state, {
 			redirectToSearchResults: true,
 			searchResults: action.searchResults,

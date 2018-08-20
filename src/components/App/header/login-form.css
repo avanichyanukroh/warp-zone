@@ -1,6 +1,6 @@
 .login-form-container {
 	background-color: #001F30;
-	width: 350px;
+	min-width: 300px;
 
 }
 

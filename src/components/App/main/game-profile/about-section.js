@@ -43,6 +43,7 @@ export class AboutSection extends React.Component {
 	handleAddToWishlist() {
 		const { gameProfile } = this.props;
 		gameProfile.username = this.props.userProfile.username;
+		console.log(gameProfile);
 		fetch("http://localhost:8000/addToWishlist", {
 			method: 'POST',
 			headers: {
@@ -98,8 +99,12 @@ export class AboutSection extends React.Component {
 				<div className="about-section-container">
 					<button className="add-game-to-wishlist-btn" id="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
 					<div id="add-game-to-wishlist-feedback">Added to wishlist</div>
-					<p className="about-info">Genre: {genresList.join(", ")}</p>
-					<p className="about-info">Platform: {platformsList.join(", ")}</p>
+					<div>
+						<label className="about-info-label">Genre:</label><p className="about-info"> {genresList.join(", ")}</p>
+					</div>
+					<div>
+						<label className="about-info-label">Platform:</label><p className="about-info"> {platformsList.join(", ")}</p>
+					</div>
 					<p 
 						className="about-summary"
 						id="about-summary">

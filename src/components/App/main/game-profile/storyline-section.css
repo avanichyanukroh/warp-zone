@@ -5,10 +5,10 @@
 }
 
 #read-more-storyline {
-	color: deepskyblue;
+	color: gold;
 	cursor: pointer;
 }
 
 #read-more-storyline:hover {
-	color: cyan;
+	color: yellow;
 }

@@ -1,7 +1,22 @@
-.user-profile-side-content-section-container {
-
+.custom-list-item {
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.3);
+	text-align: center;
+	min-height: 300px;
 }
 
-.grid-separator-container {
-	padding: 5px;
+.custom-list-item-title {
+	margin-top: 10px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+.content-items-container {
+	margin-left: 10px;
+	text-align: left;
+}
+
+.content-item {
+	color: white;
+	margin-bottom: 5px;
 }

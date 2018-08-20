@@ -13,7 +13,7 @@ class UserProfileMainInfoSection extends React.Component {
 
 		return (
 
-			<div className="col-8 user-profile-main-info-section-container">
+			<div className="col-8-alt user-profile-main-info-section-container">
 				<img src={userProfile.user_portrait} className="profile-portrait" />
 				<div className="user-profile-main-info-section-wrapper">
 					<h2 className="username-display">{userProfile.username}</h2>

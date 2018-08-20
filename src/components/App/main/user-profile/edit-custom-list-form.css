@@ -1,14 +1,14 @@
-.registeration-form-container {
+.edit-custom-list-form-container {
 	background-color: #001F30;
-	min-width: 300px;
+	width: 350px;
 
 }
 
-.registeration-form-title {
+.edit-custom-list-form-title {
 	text-align: center;
 }
 
-.registeration-form-input {
+.edit-custom-list-form-input {
 	display: block;
 	margin: 10px auto;
 	height: 35px;
@@ -26,8 +26,4 @@
 	box-shadow: 2px 2px 8px black;
 	width: 100%;
 	cursor: pointer;
-}
-
-.username-password-error-text {
-	color: red;
 }

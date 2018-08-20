@@ -28,11 +28,16 @@
 }
 
 .amazon-links {
-	color: deepskyblue;
+	color: gold;
 	cursor: pointer;
 	text-decoration: none;
+	font-style: italic;
 }
 
 .amazon-links:hover {
-	color: cyan;
+	color: yellow;
+}
+
+.price-list-info {
+	font-style: italic;
 }

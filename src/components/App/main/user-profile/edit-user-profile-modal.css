@@ -1,0 +1,11 @@
+.fa-cog {
+	display: inline-block;
+	color: white;
+	float: right;
+	cursor: pointer;
+	opacity: .3;
+}
+
+.fa-cog:hover {
+	opacity: 1;
+}

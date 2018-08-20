@@ -11,15 +11,3 @@
 .user-profile-side-info-title {
 	margin-bottom: 10px;
 }
-
-.fa-cog {
-	display: inline-block;
-	color: white;
-	float: right;
-	cursor: pointer;
-	opacity: .3;
-}
-
-.fa-cog:hover {
-	opacity: 1;
-}

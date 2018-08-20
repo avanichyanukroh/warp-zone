@@ -1,6 +1,5 @@
 .footer-container {
 	vertical-align: bottom;
-	padding: 10px;
 	background-color: #001F30;
 	border: 1px black solid;
 	box-shadow: 5px 5px 25px black;
@@ -9,5 +8,33 @@
 }
 
 .footer-section {
-	padding: 5px;
+	padding: 3px;
+	color: white;
+}
+
+.powered-by-links {
+	color: gold;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.powered-by-links:hover {
+	color: yellow;
+}
+
+.checkout-github-title {
+
+	margin-bottom: 3px;
+
+}
+
+.github-logo {
+	display: inline-block;
+	height: 30px;
+	width: auto;
+	filter: invert(100%);
+}
+
+.github-logo:hover {
+	height: 35px;
 }

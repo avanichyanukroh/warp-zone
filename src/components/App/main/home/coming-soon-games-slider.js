@@ -67,12 +67,12 @@ function PrevArrow(props) {
   );
 };
 
-class PopularGamesSlider extends React.Component {
+class ComingSoonGamesSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			popularGamesItems: []
+			comingSoonGamesItems: []
 		};
 
 		this.loadSlider = this.loadSlider.bind(this);
@@ -84,8 +84,10 @@ class PopularGamesSlider extends React.Component {
 	};
 
 	loadSlider() {
+		const dateToday = new Date();
+		const dateTodayConverted = dateToday.getTime();
 		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=id,name,url,summary,storyline,collection,rating,popularity,total_rating,total_rating_count,rating_count,developers,publishers,game_engines,category,time_to_beat,player_perspectives,game_modes,themes,genres,first_release_date,platforms,release_dates,alternative_names,screenshots,videos,cover,esrb,pegi,websites&order=popularity:desc";
+		const IGDB_URL = "https://api-endpoint.igdb.com//release_dates/?fields=*&filter[platform][eq]=" + this.props.platform + "&order=date:asc&filter[date][gt]=" + dateTodayConverted + "&expand=game";
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
@@ -95,14 +97,16 @@ class PopularGamesSlider extends React.Component {
 		})
 		.then(res => {return res.json()})
 		.then(data => {
-			let popularGamesItemsList = [];
+			let comingSoonGamesItemsList = [];
 
 			data.map(item => {
-				if ("name" in item && "cover" in item && "genres" in item) {
-					popularGamesItemsList.push(item);
-				}
+				if (!(typeof item.game === "number")) {
+					if ("name" in item.game && "cover" in item.game && "genres" in item.game) {
+						comingSoonGamesItemsList.push(item.game);
+					};
+				};
 			});
-			this.setState({popularGamesItems: popularGamesItemsList});
+			this.setState({comingSoonGamesItems: comingSoonGamesItemsList});
 		})
 		.catch(err => {
 			console.log(err);
@@ -112,7 +116,7 @@ class PopularGamesSlider extends React.Component {
 	watchSelectedGameProfile(key) {
 		if (!(key == null)) {
 
-			let selectedGameProfile = this.state.popularGamesItems[`${key}`];
+			let selectedGameProfile = this.state.comingSoonGamesItems[`${key}`];
 
 			let companiesToSearch = [];
 
@@ -156,19 +160,19 @@ class PopularGamesSlider extends React.Component {
 	render() {
 
 		const gameProfile = this.props.gameProfile;
-		const { popularGamesItems }  = this.state;
+		const { comingSoonGamesItems }  = this.state;
 		let sliderItems = [];
 
-			for (let i = 0; i < popularGamesItems.length; i++) {
+			for (let i = 0; i < comingSoonGamesItems.length; i++) {
 
-				let url = i in popularGamesItems ? popularGamesItems[i].cover.cloudinary_id : null;
+				let url = i in comingSoonGamesItems ? comingSoonGamesItems[i].cover.cloudinary_id : null;
 				sliderItems.push(
-					<div className="slider-item-container" key={ i in popularGamesItems ? popularGamesItems[i].id : null }>
+					<div className="slider-item-container" key={ i in comingSoonGamesItems ? comingSoonGamesItems[i].id : null }>
 						<Link
 							className="slider-link"
 							to="/game-profile"
-							key={ i in popularGamesItems ? i : null }
-							onClick={ () => this.watchSelectedGameProfile( i in popularGamesItems ? i : null ) }>
+							key={ i in comingSoonGamesItems ? i : null }
+							onClick={ () => this.watchSelectedGameProfile( i in comingSoonGamesItems ? i : null ) }>
 							<div className="slider-img-container">
 								<img className="slider-img" src={ "//images.igdb.com/igdb/image/upload/t_cover_big/" + url + ".jpg" } />
 							</div>
@@ -177,11 +181,11 @@ class PopularGamesSlider extends React.Component {
 							<Link
 									className="slider-link"
 									to="/game-profile"
-									key={ i in popularGamesItems ? i : null }
-									onClick={ () => this.watchSelectedGameProfile( i in popularGamesItems ? i : null ) }>
-								<p className="slider-item-title">{ i in popularGamesItems ? popularGamesItems[i].name : null }</p>
+									key={ i in comingSoonGamesItems ? i : null }
+									onClick={ () => this.watchSelectedGameProfile( i in comingSoonGamesItems ? i : null ) }>
+								<p className="slider-item-title">{ i in comingSoonGamesItems ? comingSoonGamesItems[i].name : null }</p>
 							</Link>
-							<p className="slider-genre-display">{ i in popularGamesItems ? genres[popularGamesItems[i].genres] : null }</p>
+							<p>{ i in comingSoonGamesItems ? genres[comingSoonGamesItems[i].genres] : null }</p>
 						</div>
 					</div>
 				);
@@ -201,4 +205,4 @@ const mapStateToProps = state => ({
 	gameProfile: state.gameProfile
 });
 
-export default connect(mapStateToProps)(PopularGamesSlider);
+export default connect(mapStateToProps)(ComingSoonGamesSlider);

@@ -5,6 +5,8 @@ import { resetRedirect } from '../../../../actions';
 import '../../float-grid.css';
 import './home.css';
 import PopularGamesSlider from './popular-games-slider';
+import ComingSoonGamesSlider from './coming-soon-games-slider';
+import { platforms } from '../../IGDB-id-converter.js';
 
 export class Home extends React.Component {
 
@@ -12,7 +14,9 @@ export class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			gameSearchResults: []
+			gameSearchResults: [],
+			platformToRender: 6,
+			platformToRenderTitle: "PC (Microsoft)"
 		};
 
 		this.resetRedirect = this.resetRedirect.bind(this);
@@ -20,6 +24,9 @@ export class Home extends React.Component {
 
 	componentWillMount() {
 		this.resetRedirect();
+		const randomNumberGenerator = Math.floor(Math.random() * 5);
+		const platformToRenderList = [48, 49, 6, 130, 37];
+		this.setState({platformToRender: platformToRenderList[randomNumberGenerator], platformToRenderTitle: platforms[platformToRenderList[randomNumberGenerator]]});
 	}
 
 	resetRedirect() {
@@ -28,14 +35,17 @@ export class Home extends React.Component {
 	
 	render() {
 
+
 		return (
 			
 			<div className="home-container">
 				<div className="row">
-				<h2 className="home-greeting-title"> Welcome!</h2>
+				<h2 className="home-greeting-title"> Welcome! Find the right game for the right price here, at Warp Zone.</h2>
 					<section className="col-12 home-section-container">
 					<h2 className="home-section-title">Popular games right now</h2>
 					<PopularGamesSlider />
+					<h2 className="coming-soon-section-title">Coming soon for {this.state.platformToRenderTitle}</h2>
+					<ComingSoonGamesSlider platform={this.state.platformToRender} />
 					</section>
 				</div>
 			</div>

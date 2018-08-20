@@ -16,7 +16,7 @@ export class ReleaseDatesSection extends React.Component {
 			let reformattedReleaseDate = splitReleaseDate[1] + " " + splitReleaseDate[2] + ", " + splitReleaseDate[0];
 
 			releaseDatesList.push(
-				<li key={keyCount ++}>{reformattedReleaseDate} - {platforms[releaseDate.platform]}</li>
+				<li key={keyCount ++}>{reformattedReleaseDate} - <span className="release-date-platform-display">{platforms[releaseDate.platform]}</span></li>
 			);
 		});
 		

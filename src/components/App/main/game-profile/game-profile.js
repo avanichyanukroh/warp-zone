@@ -25,12 +25,13 @@ export class GameProfile extends React.Component {
 				<div className="game-profile-content-background">
 					<div className="row game-profile-preview-container">
 						<h1 className="col-12 game-profile-name">{ "name" in gameProfile ? gameProfile.name : "Unititled" }</h1>
-						<GameProfileMainPreviewSection />
 						<GameProfileSidePreviewSection />
+						<GameProfileMainPreviewSection />
+
 					</div>
 					<div className="row game-profile-content-container">
-						<GameProfileMainContentSection />
 						<GameProfileSideContentSection />
+						<GameProfileMainContentSection />
 					</div>
 				</div>
 			</div>

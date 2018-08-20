@@ -12,12 +12,13 @@ export default function UserProfile(props) {
 
 		<div className="user-profile-container">
 			<div className="row user-profile-info-container">
-				<UserProfileMainInfoSection />
+			<UserProfileMainInfoSection />
 				<UserProfileSideInfoSection />
+				
 			</div>
 			<div className="row user-profile-content-container">
-					<UserProfileMainContentSection />
-					<UserProfileSideContentSection />
+				<UserProfileSideContentSection />
+				<UserProfileMainContentSection />
 			</div>
 		</div>
 		);

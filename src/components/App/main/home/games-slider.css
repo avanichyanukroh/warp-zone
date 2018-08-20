@@ -5,13 +5,15 @@
 	text-align: center;
 }
 
-.popular-slider-img-container {
+.slider-img-container {
 	height: 250px;
 	width: 100%;
 	overflow: hidden;
 	border: 1px black solid;
+	background-color: black;
 }
-.popular-slider-img {
+
+.slider-img {
 	display: block;
 	position: relative;
 	bottom: auto;
@@ -21,7 +23,7 @@
 	width: 100%;
 	margin: 0 auto;
 }
- .popular-slider-link {
+ .slider-link {
  	text-decoration: none;
  }
  
@@ -41,4 +43,9 @@
 
 .slider-item-title:hover {
 	color: #1BC0FF;
+}
+
+.slider-genre-display {
+	font-size: 13px;
+	font-style: italic;
 }

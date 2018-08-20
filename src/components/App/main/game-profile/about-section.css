@@ -5,9 +5,14 @@
 	overflow: auto;
 }
 
+.about-info-label {
+	margin-right: 3px;
+}
+
 .about-info {
+	display: inline-block;
 	padding-top: 5px;
-	font-weight: bold;
+	font-style: italic;
 }
 
 .addition-text {
@@ -44,10 +49,10 @@
 }
 
 #read-more-about-summary {
-	color: deepskyblue;
+	color: gold;
 	cursor: pointer;
 }
 
 #read-more-about-summary:hover {
-	color: cyan;
+	color: yellow;
 }

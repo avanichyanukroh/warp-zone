@@ -8,8 +8,8 @@ class InformationSection extends React.Component {
 	render() {
 		
 		const { gameProfile } = this.props;
-		const developersList = "developers" in gameProfile && (!(gameProfile.developers === null)) ? gameProfile.developers.map((developer) => <li key={developer}>{developer}</li>) : null;
-		const publishersList = "publishers" in gameProfile && (!(gameProfile.publishers === null)) ? gameProfile.publishers.map((publisher) => <li key={publisher}>{publisher}</li>) : null;
+		const developersList = "developers" in gameProfile && (!(gameProfile.developers === null)) ? gameProfile.developers.join(", ") : null;
+		const publishersList = "publishers" in gameProfile && (!(gameProfile.publishers === null)) ? gameProfile.publishers.join(", ") : null;
 		const playerPerspectivesList = "player_perspectives" in gameProfile && (!(gameProfile.player_perspectives === null)) ? gameProfile.player_perspectives.map((playerPerspective) => <li key={playerPerspective}>{player_perspectives[playerPerspective]}</li>) : null;
 		
 		return (

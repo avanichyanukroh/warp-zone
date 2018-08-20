@@ -103,7 +103,7 @@ export class PriceListSection extends React.Component {
 					{priceListSimilarMatchToRender.length > 0 ? priceListSimilarMatchToRender : <p>None available</p>}
 				</div>
 				<br/>
-				<p>based on pricecharting.com trend prices</p>
+				<p className="price-list-info">based on pricecharting.com trend prices</p>
 			</div>
 		)
 	};
