@@ -91,7 +91,7 @@ class ComingSoonGamesSlider extends React.Component {
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
-				"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
+				"user-key": 'a6cd5d421283b0fb00756dbca4e10945',
 				"accept": 'application/json'
 			}
 		})
