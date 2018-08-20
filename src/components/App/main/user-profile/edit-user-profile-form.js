@@ -49,7 +49,7 @@ class EditUserProfileForm extends React.Component {
 			user_portrait: userPortrait
 		};
 
-		fetch("http://localhost:8000/editUserProfile", {
+		fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/editUserProfile", {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

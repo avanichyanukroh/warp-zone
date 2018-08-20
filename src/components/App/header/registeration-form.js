@@ -43,7 +43,7 @@ class RegisterationForm extends React.Component {
 				username: username,
 				password: password
 			};
-			fetch("http://localhost:8000/register", {
+			fetch("mongodb://avanichyanukroh:alvin12345@ds227352.mlab.com:27352/warp-zone-api:8000/register", {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
