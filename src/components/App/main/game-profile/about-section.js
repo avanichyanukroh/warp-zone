@@ -43,7 +43,6 @@ export class AboutSection extends React.Component {
 	handleAddToWishlist() {
 		const { gameProfile } = this.props;
 		gameProfile.username = this.props.userProfile.username;
-		console.log(gameProfile);
 		fetch("https://warp-zone-api.herokuapp.com/addToWishlist", {
 			method: 'POST',
 			headers: {
@@ -53,11 +52,9 @@ export class AboutSection extends React.Component {
 			body: JSON.stringify(gameProfile)
 		})
 	  	.then(res => {
-	  		console.log(res);
 	  		return res.json();
 		})
 		.then(userProfile => {
-			console.log(userProfile);
 			this.props.dispatch(updateUserProfile(userProfile));
 			document.getElementById("add-game-to-wishlist-btn").style.display = "none";
 			document.getElementById("add-game-to-wishlist-feedback").style.display = "block";

@@ -14,7 +14,10 @@
 }
 
 .user-profile-main-info-summary {
-	padding-top: 50px;
+	max-width: 425px;
+	max-height: 90px;
+	margin-top: 50px;
+	overflow: auto;
 }
 
 h2 {

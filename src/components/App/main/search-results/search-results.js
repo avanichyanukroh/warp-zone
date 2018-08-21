@@ -66,7 +66,6 @@ class SearchResults extends React.Component {
 				selectedGameProfile.publishers.map(publisher => publishers.push(companyIdConverter[publisher]));
 				selectedGameProfile.developers = developers;
 				selectedGameProfile.publishers = publishers;
-				console.log(selectedGameProfile);
 				this.props.dispatch(selectedGameProfileToRender(selectedGameProfile));
 			})
 			.catch(err => {

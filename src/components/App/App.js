@@ -12,11 +12,10 @@ import UserProfile from './main/user-profile/user-profile';
 import Footer from './footer/footer.js';
 
 
-export class App extends React.Component {
+class App extends React.Component {
 	render() {
 
 		const { redirectToSearchResults } = this.props;
-		console.log(redirectToSearchResults);
 
 		return (
 			
