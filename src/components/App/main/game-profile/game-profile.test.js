@@ -18,3 +18,4 @@ describe('<GameProfile />', () => {
         shallow(<GameProfile store={store} />);
     });
 });
+
