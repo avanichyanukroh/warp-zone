@@ -10,39 +10,39 @@ Tired of playing the same game or simply just looking for a great video game to 
 
 Registeration Page:
 
-![registeration page](screenshot/registeration-page.png)
+![registeration page](screenshots/registeration-page.png)
 
 Login Page:
 
-![login page](screenshot/login-page.png)
+![login page](screenshots/login-page.png)
 
 Landing Page:
 
-![landing page](screenshot/landing-page.png)
+![landing page](screenshots/landing-page.png)
 
 Search Results Page:
 
-![search results page](screenshot/search-results-page.png)
+![search results page](screenshots/search-results-page.png)
 
 Game Profile Page:
 
-![game profile page](screenshot/game-profile-page.png)
+![game profile page](screenshots/game-profile-page.png)
 
 Game Profile Page (Price List Section):
 
-![game profile page price list section](screenshot/game-profile-page-2.png)
+![game profile page price list section](screenshots/game-profile-page-2.png)
 
 User Profile Page:
 
-![user profile page](screenshot/user-profile-page.png)
+![user profile page](screenshots/user-profile-page.png)
 
 Mobile Landing Page:
 
-![mobile landing page](screenshot/landing-page-mobile.png)
+![mobile landing page](screenshots/landing-page-mobile.png)
 
 Mobile User Profile Page:
 
-![mobile user profile page](screenshot/user-profile-page-mobile.png)
+![mobile user profile page](screenshots/user-profile-page-mobile.png)
 
 ## Demo
 
