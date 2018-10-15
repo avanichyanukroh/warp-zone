@@ -1,0 +1,14 @@
+.main-content-section-container {
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.3);
+	overflow: auto;
+}
+
+#read-more-storyline {
+	color: gold;
+	cursor: pointer;
+}
+
+#read-more-storyline:hover {
+	color: yellow;
+}

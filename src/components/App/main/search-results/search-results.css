@@ -1,0 +1,45 @@
+.search-results-container {
+	background-color: #003F63;
+	min-height: 1000px;
+}
+
+.search-results-title {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	margin-left: 20px;
+}
+
+.search-result-item {
+	display: block;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+.search-results-img-container {
+	display: inline-block;
+	height: 80px;
+	width: 80px;
+	overflow: hidden;
+}
+
+.search-results-img {
+	display: block;
+	vertical-align: middle;
+	height: auto;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.search-results-info-container {
+	display: inline-block;
+	vertical-align: top;
+	padding-left: 10px;
+}
+
+.search-results-link {
+	color: white;
+	text-decoration: none;
+}
+
+.search-results-link:hover {
+	color: #1BC0FF;
+}

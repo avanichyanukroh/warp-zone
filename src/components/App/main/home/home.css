@@ -1,0 +1,21 @@
+.home-container {
+	background-color: #003F63;
+	min-height: 1000px;
+	padding: 0 10px;
+}
+
+.home-section-container {
+	margin-bottom: 80px;
+}
+.home-greeting-title {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.home-section-title {
+	margin-bottom: 20px;
+}
+.coming-soon-section-title {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

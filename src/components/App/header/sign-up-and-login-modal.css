@@ -1,0 +1,51 @@
+.modal {
+ max-height: calc(100% - 100px);
+  position: fixed;
+    top: 40%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+	border: 1px solid black;
+	background: #001F30;
+	overflow: auto;
+	border-radius: 4px;
+	box-shadow: 4px 4px 15px black;
+	outline: none;
+	padding: 20px;
+	z-index: 5;
+}
+
+.overlay-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 5;
+}
+
+.signup-login-btn {
+	height: 40px;
+	background-color: #19ABFF;
+	border-style: none;
+	border-radius: 4px;
+	margin-left: 10px;
+	box-shadow: 2px 2px 8px black;
+	cursor: pointer;
+}
+
+.signup-login-btn:hover {
+	background-color: #1BC0FF;
+}
+
+.close-modal-wrapper {
+	text-align: right;
+}
+
+.exit-modal-icon {
+	color: white;
+}
+
+.exit-modal-icon:hover {
+	color: #1BC0FF;
+}

@@ -1,0 +1,29 @@
+.profile-portrait {
+	height: 200px;
+	width: 200px;
+}
+
+.user-profile-main-info-section-wrapper {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20px;
+}
+
+.user-profile-nickname {
+	padding-top: 5px;
+}
+
+.user-profile-main-info-summary {
+	max-width: 425px;
+	max-height: 90px;
+	margin-top: 50px;
+	overflow: auto;
+}
+
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}

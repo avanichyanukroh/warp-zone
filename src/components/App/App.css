@@ -1,0 +1,48 @@
+.App-header {
+	background-color: #001F30;
+	border: 1px black solid;
+	box-shadow: 5px 5px 25px black;
+	z-index: 3;
+}
+
+h1, h2, h3, h4, h5, label, p, li, button {
+	margin: 0;
+	color: white;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+label {
+	color: deepskyblue;
+	font-weight: bold;
+}
+
+h3 {
+	color: deepskyblue;
+}
+
+.NavBar {
+	display: none;
+}
+
+.NavBar-mobile {
+	display: none;
+}
+
+/*@media only screen and (min-width: 640px) {
+
+	#NavBar-mobile {
+		display: none;
+	}
+
+}*/
+
+/*@media only screen and (max-width: 640px) {
+
+	#NavBar {
+		display: none;
+	}
+
+}*/

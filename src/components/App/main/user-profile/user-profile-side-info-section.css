@@ -1,0 +1,13 @@
+.user-profile-side-info-section-container {
+
+}
+
+.user-profile-side-info-section-wrapper {
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+}
+
+.user-profile-side-info-title {
+	margin-bottom: 10px;
+}

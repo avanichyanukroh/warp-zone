@@ -1,0 +1,58 @@
+.about-section-container {
+	padding: 5px;
+	margin-top: 350px;
+	height: 230px;	
+	overflow: auto;
+}
+
+.about-info-label {
+	margin-right: 3px;
+}
+
+.about-info {
+	display: inline-block;
+	padding-top: 5px;
+	font-style: italic;
+}
+
+.addition-text {
+	font-size: 25px;
+	color: #002C45;
+}
+
+.add-game-to-wishlist-btn {
+	color: black;
+	font-weight: bold;
+	float: right;
+	height: 40px;
+	background-color: gold;
+	border-style: none;
+	border-radius: 4px;
+	margin-left: 10px;
+	box-shadow: 2px 2px 8px black;
+	cursor: pointer;
+}
+
+.add-game-to-wishlist-btn:hover {
+	background-color: yellow;
+}
+
+#add-game-to-wishlist-feedback {
+	display: none;
+	float: right;
+	color: gold;
+	font-style: italic;
+}
+
+.about-summary {
+	margin-top: 25px;
+}
+
+#read-more-about-summary {
+	color: gold;
+	cursor: pointer;
+}
+
+#read-more-about-summary:hover {
+	color: yellow;
+}

@@ -1,0 +1,13 @@
+.side-content-section-container {
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.3);
+	word-break: break-all;
+}
+
+label {
+	font-weight: bold;
+}
+
+.release-date-platform-display {
+	font-style: italic;
+}
