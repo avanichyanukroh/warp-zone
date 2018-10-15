@@ -1,8 +1,9 @@
 {
   "name": "warp-zone",
   "version": "0.1.0",
-  "engine": {
-    "node": "8.11.1"
+  "engines": {
+    "node": "8.11.1",
+    "npm": "6.0.1"
   },
   "private": true,
   "dependencies": {
