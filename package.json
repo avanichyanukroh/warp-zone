@@ -40,7 +40,6 @@
   "proxy": "http://localhost:8000",
   "devDependencies": {
     "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
-    "fsevents": "1.2.4"
+    "enzyme-adapter-react-16": "^1.6.0"
   }
 }
