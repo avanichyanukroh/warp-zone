@@ -1,4 +1,4 @@
-import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER, PRICE_LIST_TO_RENDER, LOG_OUT_USER, UPDATE_USER_PROFILE } from '../actions';
+import { RENDER_HOME, RENDER_SEARCH_RESULTS, RESET_REDIRECT, LOGGED_IN_USER, SELECTED_GAME_PROFILE_TO_RENDER, PRICE_LIST_TO_RENDER, LOG_OUT_USER, UPDATE_USER_PROFILE, CLEAR_GAME_PROFILE } from '../actions';
 
 const initialState = {
 
@@ -154,6 +154,14 @@ export const warpZoneReducer = (state = initialState, action) => {
 	if (action.type === UPDATE_USER_PROFILE) {
 		return Object.assign({}, state, {
 			userProfile: action.userProfile
+		});
+	};
+
+	if (action.type === CLEAR_GAME_PROFILE) {
+		return Object.assign({}, state, {
+			gameProfile: initialState.gameProfile,
+			priceListSimilarMatch: initialState.priceListSimilarMatch,
+			priceListExactMatch: initialState.priceListExactMatch
 		});
 	};
 
