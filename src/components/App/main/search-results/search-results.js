@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
-import { resetRedirect, getSelectedGameProfile } from '../../../../actions';
+import { resetRedirect, selectedGameProfileToRender } from '../../../../actions';
 import '../../float-grid.css';
 import './search-results.css';
 import { genres } from '../../IGDB-id-converter.js';
@@ -33,9 +33,44 @@ class SearchResults extends React.Component {
 
 	watchSelectedGameProfile(key) {
 		if (!(key == null)) {
+
 			let selectedGameProfile = this.props.searchResults[`${key}`];
-			
-			this.props.dispatch(getSelectedGameProfile(selectedGameProfile));
+
+			let companiesToSearch = [];
+
+			selectedGameProfile.developers.map(developer => companiesToSearch.push(developer));
+			selectedGameProfile.publishers.map(publisher => companiesToSearch.push(publisher));
+
+			const joinedCompaniesToSearch = companiesToSearch.join(",");
+
+			const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+			const IGDB_URL = "https://api-endpoint.igdb.com/companies/" + joinedCompaniesToSearch +  "?fields=name";
+				
+			fetch(PROXY_URL + IGDB_URL, {
+				method: 'GET',
+				headers: {
+					"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
+					"accept": 'application/json'
+				}
+			})
+			.then(res => {
+				return res.json();
+			})
+			.then(data => {
+				let companyIdConverter = {};
+				let developers = [];
+				let publishers = [];
+
+				data.map(company => companyIdConverter[company.id] = company.name);
+				selectedGameProfile.developers.map(developer => developers.push(companyIdConverter[developer]));
+				selectedGameProfile.publishers.map(publisher => publishers.push(companyIdConverter[publisher]));
+				selectedGameProfile.developers = developers;
+				selectedGameProfile.publishers = publishers;
+				this.props.dispatch(selectedGameProfileToRender(selectedGameProfile));
+			})
+			.catch(err => {
+				console.log(err);
+			});
 		};
 	};
 

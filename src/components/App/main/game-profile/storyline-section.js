@@ -8,27 +8,24 @@ export class StorylineSection extends React.Component {
 		super(props);
 
 		this.state = {
-			storyline: "Storyline not available."
+			storyline: "storyline" in this.props.gameProfile && (!(this.props.gameProfile.storyline === null)) ? this.props.gameProfile.storyline.slice(0,339) + "...": "Storyline not available."
 		};
 		this.switchStorylineDescription = this.switchStorylineDescription.bind(this);
 	};
 
 	switchStorylineDescription(event) {
-		document.getElementById("storyline").textContent = `${this.props.gameProfile.storyline}`
+		this.setState({storyline: this.props.gameProfile.storyline});
 		document.getElementById("read-more-storyline").style.display = "none";
 	};
 
-	componentDidMount() {
-
-	};
-
 	render() {
-		if (this.props.storyline === undefined) {
+		if (this.state.storyline === "Storyline not available.") {
 			return (
+
 				<div className="main-content-section-container">
 					<h3>Storyline</h3>
 					<br/>
-					<p id="storyline">Storyline not available.</p>
+					<p id="storyline">{this.state.storyline}</p>
 				</div>
 			);
 		}
@@ -38,11 +35,7 @@ export class StorylineSection extends React.Component {
 				<div className="main-content-section-container">
 					<h3>Storyline</h3>
 					<br/>
-					<p id="storyline">
-						{"storyline" in this.props.gameProfile &&
-						(!(this.props.gameProfile.storyline === null)) ?
-						this.props.gameProfile.storyline.slice(0,339) + "...": "Storyline not available."}
-					</p>
+					<p id="storyline">{this.state.storyline}</p>
 					<span 
 						id="read-more-storyline"
 						onClick={() => this.switchStorylineDescription()}>

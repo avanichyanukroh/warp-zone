@@ -16,13 +16,9 @@ export class AboutSection extends React.Component {
 
 	renderShortDescription() {
 		let shortDescription;
-		let currentDate = new Date();
 
 		if ("summary" in this.props.gameProfile && (!(this.props.gameProfile.summary == ""))) {
 			shortDescription =  this.props.gameProfile.summary.slice(0,339) + "...";
-		}
-		else if (this.props.gameProfile.first_release_date > currentDate) {
-			shortDescription = "Currently in production";
 		}
 		else {
 			shortDescription = "Summary unavailable";
@@ -95,90 +91,50 @@ export class AboutSection extends React.Component {
 
 		if (!(loggedInUser === undefined)) {
 
-			if (this.props.gameProfile.summary === undefined) {
-				return (
+			return (
 
-					<div className="about-section-container">
-						<button className="add-game-to-wishlist-btn" id="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
-						<div id="add-game-to-wishlist-feedback">Added to wishlist</div>
-						<div>
-							<label className="about-info-label">Genre:</label><p className="about-info"> {genresList.join(", ")}</p>
-						</div>
-						<div>
-							<label className="about-info-label">Platform:</label><p className="about-info"> {platformsList.join(", ")}</p>
-						</div>
-						<p 
-							className="about-summary"
-							id="about-summary">
-							{this.renderShortDescription()}
-						</p>
+				<div className="about-section-container">
+					<button className="add-game-to-wishlist-btn" id="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
+					<div id="add-game-to-wishlist-feedback">Added to wishlist</div>
+					<div>
+						<label className="about-info-label">Genre:</label><p className="about-info"> {genresList.join(", ")}</p>
 					</div>
-				);
-			}
-			else {
-				return (
-
-					<div className="about-section-container">
-						<button className="add-game-to-wishlist-btn" id="add-game-to-wishlist-btn" onClick={() => {this.handleAddToWishlist()}}><h2 className="addition-text">+</h2> to wishlist</button>
-						<div id="add-game-to-wishlist-feedback">Added to wishlist</div>
-						<div>
-							<label className="about-info-label">Genre:</label><p className="about-info"> {genresList.join(", ")}</p>
-						</div>
-						<div>
-							<label className="about-info-label">Platform:</label><p className="about-info"> {platformsList.join(", ")}</p>
-						</div>
-						<p 
-							className="about-summary"
-							id="about-summary">
-							{this.renderShortDescription()}
-						</p>
-						<span 
-							id="read-more-about-summary"
-							onClick={() => this.switchAboutSummaryDescription()}>
-							Read more
-						</span>
+					<div>
+						<label className="about-info-label">Platform:</label><p className="about-info"> {platformsList.join(", ")}</p>
 					</div>
-				);
-			}
-			
+					<p 
+						className="about-summary"
+						id="about-summary">
+						{this.renderShortDescription()}
+					</p>
+					<span 
+						id="read-more-about-summary"
+						onClick={() => this.switchAboutSummaryDescription()}>
+						Read more
+					</span>
+				</div>
+			);
 		}
 		else {
 
-			if (this.props.gameProfile.summary === undefined) {
-				return (
+			return (
 
-					<div className="about-section-container">
-						<button className="add-game-to-wishlist-btn" onClick={() => {alert("Please sign in to add game to wishlist.")}}><h2 className="addition-text">+</h2> to wishlist</button>
-						<p className="about-info">Genre: {genresList.join(", ")}</p>
-						<p className="about-info">Platform: {platformsList.join(", ")}</p>
-						<p 
-							className="about-summary"
-							id="about-summary">
-							{this.renderShortDescription()}
-						</p>
-					</div>
-				);
-			}
-			else {
-				return (
-
-					<div className="about-section-container">
-						<button className="add-game-to-wishlist-btn" onClick={() => {alert("Please sign in to add game to wishlist.")}}><h2 className="addition-text">+</h2> to wishlist</button>
-						<p className="about-info">Genre: {genresList.join(", ")}</p>
-						<p className="about-info">Platform: {platformsList.join(", ")}</p>
-						<p 
-							className="about-summary"
-							id="about-summary">
-							{this.renderShortDescription()}
-						</p>
-						<span 
-							id="read-more-about-summary"
-							onClick={() => this.switchAboutSummaryDescription()}>
-							Read more
-						</span>
-					</div>
-				);
-			}
+				<div className="about-section-container">
+					<button className="add-game-to-wishlist-btn" onClick={() => {alert("Please sign in to add game to wishlist.")}}><h2 className="addition-text">+</h2> to wishlist</button>
+					<p className="about-info">Genre: {genresList.join(", ")}</p>
+					<p className="about-info">Platform: {platformsList.join(", ")}</p>
+					<p 
+						className="about-summary"
+						id="about-summary">
+						{this.renderShortDescription()}
+					</p>
+					<span 
+						id="read-more-about-summary"
+						onClick={() => this.switchAboutSummaryDescription()}>
+						Read more
+					</span>
+				</div>
+			);
 		}
 	};
 }

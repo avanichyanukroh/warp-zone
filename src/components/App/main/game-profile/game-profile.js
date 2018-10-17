@@ -7,18 +7,11 @@ import GameProfileSidePreviewSection from './game-profile-side-preview-section';
 import GameProfileMainContentSection from './game-profile-main-content-section';
 import GameProfileSideContentSection from './game-profile-side-content-section';
 
-import { clearGameProfile } from '../../../../actions';
-
 export class GameProfile extends React.Component {
-
-	componentWillUnmount() {
-		this.props.dispatch(clearGameProfile());
-	}
-
 	render() {
 		const gameProfile = this.props.gameProfile;
 		const bannerStyle = {
-			backgroundImage: 'url(' + 'https://images.igdb.com/igdb/image/upload/t_screenshot_huge/' + `${"screenshots" in gameProfile ? gameProfile.screenshots[0].cloudinary_id : null}` + '.jpg)'
+			backgroundImage: 'url(' + '//images.igdb.com/igdb/image/upload/t_screenshot_huge/' + `${"screenshots" in gameProfile ? gameProfile.screenshots[0].cloudinary_id : null}` + ')'
 			};
 
 		return(

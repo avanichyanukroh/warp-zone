@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { getGamePriceList } from '../../../../actions';
+import { priceListToRender } from '../../../../actions';
 import '../../float-grid.css';
 import './price-list-section.css';
 
@@ -12,13 +12,34 @@ export class PriceListSection extends React.Component {
 	};
 
 	componentDidMount() {
-
+		this.getGamePriceList();
 	};
 
 	getGamePriceList() {
 
+		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+		const PRICE_CHARTING_URL = "https://www.pricecharting.com/api/products?t=66b5c94722879a1d260216f923ab381f633e1eb4&q=" + this.props.gameProfile.name;
+		fetch(PROXY_URL + PRICE_CHARTING_URL, {
+			method: 'GET'
+		})
+		.then(res => {return res.json()})
+		.then(data => {
+			let gamePriceListExactMatch = [];
+			let gamePriceListSimilarMatch = [];
+			data.products.map(item => {
+				if (item["product-name"] === this.props.gameProfile.name) {
+					gamePriceListExactMatch.push(item);
+				}
+				else {
+					gamePriceListSimilarMatch.push(item);
+				}
+			});
+			this.props.dispatch(priceListToRender(gamePriceListExactMatch, gamePriceListSimilarMatch));
+		})
+		.catch(err => {
+			console.log(err);
+		});
 	};
-
 
 	render() {
 		const { gameProfile } = this.props;

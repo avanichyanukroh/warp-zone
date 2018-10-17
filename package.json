@@ -1,26 +1,22 @@
 {
   "name": "warp-zone",
   "version": "0.1.0",
-  "engines": {
-    "node": "8.11.1",
-    "npm": "6.0.1"
-  },
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.5",
-    "@fortawesome/free-solid-svg-icons": "^5.4.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
-    "ajv": "^6.5.4",
+    "ajv": "^6.5.3",
     "chokidar": "^2.0.4",
     "font-awesome": "^4.7.0",
     "i": "^0.3.6",
     "jquery": "^3.3.1",
-    "npm": "^6.4.1",
-    "react": "^16.5.2",
+    "npm": "^6.2.0",
+    "react": "^16.4.2",
     "react-collapse": "^4.0.3",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
-    "react-modal": "^3.6.1",
+    "react-modal": "^3.5.1",
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.7",
     "react-responsive": "^5.0.0",
@@ -28,7 +24,6 @@
     "react-scripts": "1.1.4",
     "react-slick": "^0.23.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "validate-npm-package-name": "^3.0.0"
   },
@@ -40,7 +35,8 @@
   },
   "proxy": "http://localhost:8000",
   "devDependencies": {
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0"
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "fsevents": "1.2.4"
   }
 }
