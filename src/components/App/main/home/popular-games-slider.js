@@ -84,9 +84,9 @@ class PopularGamesSlider extends React.Component {
 	};
 
 	loadSlider() {
-		// const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+		const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
 		const IGDB_URL = "https://api-endpoint.igdb.com/games/?fields=id,name,url,summary,storyline,collection,rating,popularity,total_rating,total_rating_count,rating_count,developers,publishers,game_engines,category,time_to_beat,player_perspectives,game_modes,themes,genres,first_release_date,platforms,release_dates,alternative_names,screenshots,videos,cover,esrb,pegi,websites&order=popularity:desc";
-		fetch(IGDB_URL, {
+		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
 				"user-key": 'a6cd5d421283b0fb00756dbca4e10945',

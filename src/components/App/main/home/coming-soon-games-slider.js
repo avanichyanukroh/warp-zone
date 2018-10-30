@@ -86,9 +86,10 @@ class ComingSoonGamesSlider extends React.Component {
 	loadSlider() {
 		const dateToday = new Date();
 		const dateTodayConverted = dateToday.getTime();
-		// const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com/release_dates/?fields=*&filter[platform][eq]=" + this.props.platform + "&order=date:asc&filter[date][gt]=" + dateTodayConverted + "&expand=game";
-		fetch(IGDB_URL, {
+		console.log(dateTodayConverted);
+		const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
+		const IGDB_URL = "https://api-endpoint.igdb.com/release_dates/?fields=game.id,game.name,game.url,game.summary,game.storyline,game.collection,game.rating,game.popularity,game.total_rating,game.total_rating_count,game.rating_count,game.developers,game.publishers,game.game_engines,game.category,game.time_to_beat,game.player_perspectives,game.game_modes,game.themes,game.genres,game.first_release_date,game.platforms,game.release_dates,game.alternative_names,game.screenshots,game.videos,game.cover,game.esrb,game.pegi,game.websites&filter[platform][eq]=" + this.props.platform + "&order=date:asc&filter[date][gt]=" + dateTodayConverted + "&expand=game";
+		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
 				"user-key": 'a6cd5d421283b0fb00756dbca4e10945',

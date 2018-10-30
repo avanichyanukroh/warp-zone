@@ -61,7 +61,7 @@ export const getSelectedGameProfile = selectedGameProfile => dispatch => {
 
 	const joinedCompaniesToSearch = companiesToSearch.join(",");
 
-	const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+	const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
 	const IGDB_URL = "https://api-endpoint.igdb.com/companies/" + joinedCompaniesToSearch +  "?fields=name";
 		
 	fetch(PROXY_URL + IGDB_URL, {
@@ -95,7 +95,7 @@ export const getSelectedGameProfile = selectedGameProfile => dispatch => {
 }
 
 export const getGamePriceList = profileName => dispatch => {
-	const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+	const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
 	const PRICE_CHARTING_URL = "https://www.pricecharting.com/api/products?t=66b5c94722879a1d260216f923ab381f633e1eb4&q=" + profileName;
 	fetch(PROXY_URL + PRICE_CHARTING_URL, {
 		method: 'GET'
@@ -121,7 +121,7 @@ export const getGamePriceList = profileName => dispatch => {
 
 
 export const getGameProfileList = searchTerm => dispatch => {
-	const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+	const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
 	const IGDB_URL = "https://api-endpoint.igdb.com/games/?search=" + searchTerm + "&fields=id,name,url,summary,storyline,collection,rating,popularity,total_rating,total_rating_count,rating_count,developers,publishers,game_engines,category,time_to_beat,player_perspectives,game_modes,themes,genres,first_release_date,platforms,release_dates,alternative_names,screenshots,videos,cover,esrb,pegi,websites";
 	fetch(PROXY_URL + IGDB_URL, {
 		method: 'GET',
