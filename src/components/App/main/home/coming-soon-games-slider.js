@@ -86,9 +86,9 @@ class ComingSoonGamesSlider extends React.Component {
 	loadSlider() {
 		const dateToday = new Date();
 		const dateTodayConverted = dateToday.getTime();
-		const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-		const IGDB_URL = "https://api-endpoint.igdb.com//release_dates/?fields=*&filter[platform][eq]=" + this.props.platform + "&order=date:asc&filter[date][gt]=" + dateTodayConverted + "&expand=game";
-		fetch(PROXY_URL + IGDB_URL, {
+		// const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+		const IGDB_URL = "https://api-endpoint.igdb.com/release_dates/?fields=*&filter[platform][eq]=" + this.props.platform + "&order=date:asc&filter[date][gt]=" + dateTodayConverted + "&expand=game";
+		fetch(IGDB_URL, {
 			method: 'GET',
 			headers: {
 				"user-key": 'a6cd5d421283b0fb00756dbca4e10945',
@@ -97,6 +97,7 @@ class ComingSoonGamesSlider extends React.Component {
 		})
 		.then(res => {return res.json()})
 		.then(data => {
+			console.log(data);
 			let comingSoonGamesItemsList = [];
 
 			data.map(item => {
@@ -111,7 +112,7 @@ class ComingSoonGamesSlider extends React.Component {
 		.catch(err => {
 			console.log(err);
 		});
-};
+	};
 
 	watchSelectedGameProfile(key) {
 		if (!(key == null)) {
