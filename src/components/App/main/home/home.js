@@ -5,7 +5,7 @@ import { resetRedirect } from '../../../../actions';
 import '../../float-grid.css';
 import './home.css';
 import PopularGamesSlider from './popular-games-slider';
-import ComingSoonGamesSlider from './coming-soon-games-slider';
+// import ComingSoonGamesSlider from './coming-soon-games-slider';
 import { platforms } from '../../IGDB-id-converter.js';
 
 export class Home extends React.Component {
@@ -34,18 +34,27 @@ export class Home extends React.Component {
 	}
 	
 	render() {
-
+		const bannerStyle = {
+			backgroundImage: 'url(./video-game-banner.jpg)'
+			};
 
 		return (
 			
 			<div className="home-container">
+					<div className="parallax-container">
+						<div className="game-profile-banner home-banner"></div>
+					</div>
 				<div className="row">
-				<h2 className="home-greeting-title"> Welcome! Find the right game for the right price here, at Warp Zone.</h2>
+				<div className="home-greeting-title">
+					<h2 className="home-greeting-title-text"> Welcome! <br/>Find the right game for the right price here, at Warp Zone.</h2>
+				</div>
 					<section className="col-12 home-section-container">
 					<h2 className="home-section-title">Popular games right now</h2>
 					<PopularGamesSlider />
-					<h2 className="coming-soon-section-title">Coming soon for {this.state.platformToRenderTitle}</h2>
-					<ComingSoonGamesSlider platform={this.state.platformToRender} />
+					<div className="dummy-login-info">
+						<h2 className="coming-soon-section-title">Check out your personal profile with a demo account provided below.</h2>
+						<p><b>username:</b> gamer1 <br/> <b>password:</b> password</p>
+					</div>
 					</section>
 				</div>
 			</div>

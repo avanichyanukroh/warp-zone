@@ -10,7 +10,7 @@ export default function Footer(props) {
 			<div className="col-4 footer-section">
 					<p>Site Powered by:</p> 
 					<a className="powered-by-links" href="https://www.igdb.com" target="_blank">IGDB.com</a>, 
-					<a className="powered-by-links" href="https://www.pricecharting.com" target="_blank">PriceCharting.com</a>
+					<a className="powered-by-links" href="https://www.pricecharting.com" target="_blank"> PriceCharting.com</a>
 				</div>
 				<div className="col-4 footer-section">
 

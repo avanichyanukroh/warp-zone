@@ -20,29 +20,51 @@ export class GameProfile extends React.Component {
 		const bannerStyle = {
 			backgroundImage: 'url(' + 'https://images.igdb.com/igdb/image/upload/t_screenshot_huge/' + `${"screenshots" in gameProfile ? gameProfile.screenshots[0].cloudinary_id : null}` + '.jpg)'
 			};
-
-		return(
-			<div>
-				<div className="parallax-container">
-					<div 
-						className="game-profile-banner"
-						style={bannerStyle}>
+		if (gameProfile.name === "") {
+			return(
+				<div>
+					<div className="parallax-container">
+						<div 
+							className="game-profile-banner"
+							style={bannerStyle}>
+						</div>
+					</div>
+					<div className="game-profile-content-background">
+						<div className="row game-profile-preview-container">
+							<h1 className="col-12 game-profile-name">Sorry! Information on this game is currently unavailable.</h1>
+						</div>
+						<div className="row game-profile-content-container">
+							<div className="filler-container"></div>
+						</div>
 					</div>
 				</div>
-				<div className="game-profile-content-background">
-					<div className="row game-profile-preview-container">
-						<h1 className="col-12 game-profile-name">{ "name" in gameProfile ? gameProfile.name : "Unititled" }</h1>
-						<GameProfileSidePreviewSection />
-						<GameProfileMainPreviewSection />
-
+			);
+		}
+		else {
+			return(
+				<div>
+					<div className="parallax-container">
+						<div 
+							className="game-profile-banner"
+							style={bannerStyle}>
+						</div>
 					</div>
-					<div className="row game-profile-content-container">
-						<GameProfileSideContentSection />
-						<GameProfileMainContentSection />
+					<div className="game-profile-content-background">
+						<div className="row game-profile-preview-container">
+							<h1 className="col-12 game-profile-name">{ "name" in gameProfile ? gameProfile.name : "Unititled" }</h1>
+							<GameProfileSidePreviewSection />
+							<GameProfileMainPreviewSection />
+
+						</div>
+						<div className="row game-profile-content-container">
+							<GameProfileSideContentSection />
+							<GameProfileMainContentSection />
+						</div>
 					</div>
 				</div>
-			</div>
-		)
+			);
+		}
+		
 	};
 }
 

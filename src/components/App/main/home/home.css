@@ -5,11 +5,22 @@
 }
 
 .home-section-container {
+	margin-top: 250px;
 	margin-bottom: 80px;
 }
+
 .home-greeting-title {
-	margin-top: 20px;
-	margin-bottom: 30px;
+	font-size: 22px;
+	position: relative;
+	margin: 150px auto 0;
+	z-index: 3;
+	text-align: center;
+/*	border: 1px solid black;*/
+}
+
+.home-greeting-title-text {
+	color: #FFD700;
+	text-shadow: 4px 4px 4px black;
 }
 
 .home-section-title {
@@ -18,4 +29,13 @@
 .coming-soon-section-title {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.home-banner {
+	background-image: url("./video-game-banner.jpg");
+}
+
+.dummy-login-info {
+	margin-top: 50px;
+	text-align: center;
 }

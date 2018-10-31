@@ -103,6 +103,8 @@ class PopularGamesSlider extends React.Component {
 				}
 			});
 			this.setState({popularGamesItems: popularGamesItemsList});
+			console.log(this.state.popularGamesItems[0]);
+			console.log(this.state.popularGamesItems[1])
 		})
 		.catch(err => {
 			console.log(err);
@@ -110,6 +112,7 @@ class PopularGamesSlider extends React.Component {
 };
 
 	watchSelectedGameProfile(key) {
+		console.log("key is", key);
 		if (!(key == null)) {
 			let selectedGameProfile = this.state.popularGamesItems[`${key}`];
 			this.props.dispatch(getSelectedGameProfile(selectedGameProfile));

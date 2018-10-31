@@ -14,7 +14,6 @@ import Footer from './footer/footer.js';
 
 class App extends React.Component {
 	render() {
-
 		const { redirectToSearchResults } = this.props;
 
 		return (

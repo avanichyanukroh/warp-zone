@@ -10,7 +10,7 @@ const initialState = {
 	gameProfile: {
 
 		"id": 0,
-		"name": "",
+		"name": "Retrieving Game",
 		"url": "",
 		"summary": "",
 		"storyline": "",

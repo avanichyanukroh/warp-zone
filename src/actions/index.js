@@ -56,42 +56,51 @@ export const clearGameProfile = () => ({
 export const getSelectedGameProfile = selectedGameProfile => dispatch => {
 	let companiesToSearch = [];
 
-	selectedGameProfile.developers.map(developer => companiesToSearch.push(developer));
-	selectedGameProfile.publishers.map(publisher => companiesToSearch.push(publisher));
+	if (!(selectedGameProfile.developers === undefined || selectedGameProfile.publishers === undefined)) {
+		selectedGameProfile.developers.map(developer => companiesToSearch.push(developer));
+		selectedGameProfile.publishers.map(publisher => companiesToSearch.push(publisher));
 
-	const joinedCompaniesToSearch = companiesToSearch.join(",");
+		const joinedCompaniesToSearch = companiesToSearch.join(",");
 
-	const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
-	const IGDB_URL = "https://api-endpoint.igdb.com/companies/" + joinedCompaniesToSearch +  "?fields=name";
-		
-	fetch(PROXY_URL + IGDB_URL, {
-		method: 'GET',
-		headers: {
-			"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
-			"accept": 'application/json'
-		}
-	})
-	.then(res => {
-		return res.json();
-	})
-	.then(data => {
-		let companyIdConverter = {};
-		let developers = [];
-		let publishers = [];
+		const PROXY_URL = "https://cors-anywhere-proxy-path.herokuapp.com/";
+		const IGDB_URL = "https://api-endpoint.igdb.com/companies/" + joinedCompaniesToSearch +  "?fields=name";
+			
+		fetch(PROXY_URL + IGDB_URL, {
+			method: 'GET',
+			headers: {
+				"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
+				"accept": 'application/json'
+			}
+		})
+		.then(res => {
+			return res.json();
+		})
+		.then(data => {
+			let companyIdConverter = {};
+			let developers = [];
+			let publishers = [];
 
-		data.map(company => companyIdConverter[company.id] = company.name);
-		selectedGameProfile.developers.map(developer => developers.push(companyIdConverter[developer]));
-		selectedGameProfile.publishers.map(publisher => publishers.push(companyIdConverter[publisher]));
-		selectedGameProfile.developers = developers;
-		selectedGameProfile.publishers = publishers;
+			data.map(company => companyIdConverter[company.id] = company.name);
+			selectedGameProfile.developers.map(developer => developers.push(companyIdConverter[developer]));
+			selectedGameProfile.publishers.map(publisher => publishers.push(companyIdConverter[publisher]));
+			selectedGameProfile.developers = developers;
+			selectedGameProfile.publishers = publishers;
+			dispatch(selectedGameProfileToRender(selectedGameProfile));
+		})
+		.then(data => {
+			dispatch(getGamePriceList(selectedGameProfile.name));
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	}
+
+	else {
 		dispatch(selectedGameProfileToRender(selectedGameProfile));
-	})
-	.then(data => {
 		dispatch(getGamePriceList(selectedGameProfile.name));
-	})
-	.catch(err => {
-		console.log(err);
-	});
+	}
+
+	
 }
 
 export const getGamePriceList = profileName => dispatch => {
