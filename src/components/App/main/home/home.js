@@ -51,9 +51,30 @@ export class Home extends React.Component {
 					<section className="col-12 home-section-container">
 					<h2 className="home-section-title">Popular games right now</h2>
 					<PopularGamesSlider />
+					<div className="demo-section-container">
+						<div className="demo-section-title">
+							<h2>How to use Warp Zone.</h2>
+						</div>
+						<p>Search your video game of interest in the search bar found at the top of the page. 
+						This will populate a list based on your search query.</p>
+						<div className="demo-screenshot-container">
+							<div className="search-results-screenshot"></div>
+						</div>
+						<p>Selecting one of the video game from the list will redirect you to game profile where you can find various details of the video game of interest.</p>
+						<div className="demo-screenshot-container-2">
+							<div className="game-profile-screenshot"></div>
+						</div>
+						<p>You may also find the price comparison section below.</p>
+						<div className="demo-screenshot-container-2">
+							<div className="game-profile-screenshot-2"></div>
+						</div>
+					</div>
 					<div className="dummy-login-info">
-						<h2 className="coming-soon-section-title">Check out your personal profile with a demo account provided below.</h2>
+						<h2 className="demo-section-title">Check out a personal profile by logging in with a demo account provided below.</h2>
 						<p><b>username:</b> gamer1 <br/> <b>password:</b> password</p>
+						<div className="demo-screenshot-container-2">
+							<div className="user-profile-screenshot"></div>
+						</div>
 					</div>
 					</section>
 				</div>

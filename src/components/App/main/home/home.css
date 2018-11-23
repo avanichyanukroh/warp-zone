@@ -26,7 +26,7 @@
 .home-section-title {
 	margin-bottom: 20px;
 }
-.coming-soon-section-title {
+.demo-section-title {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -35,7 +35,73 @@
 	background-image: url("./video-game-banner.jpg");
 }
 
-.dummy-login-info {
+.demo-screenshot-container {
+	position: relative;
+	height: 945px;
+	width: 100%;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border: 3px solid black;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.demo-screenshot-container-2 {
+	position: relative;
+	height: 862px;
+	width: 100%;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border: 3px solid black;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.search-results-screenshot {
+	display: block;
+	background-image: url("./search-results-page.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	left: -25%;
+	height: 945px;
+	width: 1901px;
+}
+
+.game-profile-screenshot {
+	display: block;
+	background-image: url("./game-profile-page.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	top: -10%;
+	left: -45%;
+	height: 945px;
+	width: 1901px;
+}
+
+.game-profile-screenshot-2 {
+	display: block;
+	background-image: url("./game-profile-page-2.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	top: -10%;
+	left: -45.6%;
+	height: 945px;
+	width: 1901px;
+}
+
+.user-profile-screenshot {
+	display: block;
+	background-image: url("./user-profile-page.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	top: -6.6%;
+	left: -45.6%;
+	height: 945px;
+	width: 1901px;
+}
+
+.demo-section-title, .dummy-login-info {
 	margin-top: 50px;
 	text-align: center;
 }
