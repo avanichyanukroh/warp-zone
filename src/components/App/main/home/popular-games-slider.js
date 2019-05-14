@@ -89,7 +89,7 @@ class PopularGamesSlider extends React.Component {
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
-				"user-key": 'a6cd5d421283b0fb00756dbca4e10945',
+				"user-key": 'e3a95dd164fdc12b9eb483624161e322',
 				"accept": 'application/json'
 			}
 		})

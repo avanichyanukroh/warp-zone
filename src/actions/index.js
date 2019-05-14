@@ -68,7 +68,7 @@ export const getSelectedGameProfile = selectedGameProfile => dispatch => {
 		fetch(PROXY_URL + IGDB_URL, {
 			method: 'GET',
 			headers: {
-				"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
+				"user-key": 'e3a95dd164fdc12b9eb483624161e322',
 				"accept": 'application/json'
 			}
 		})
@@ -135,7 +135,7 @@ export const getGameProfileList = searchTerm => dispatch => {
 	fetch(PROXY_URL + IGDB_URL, {
 		method: 'GET',
 		headers: {
-			"user-key": '0f9d8cb6b2a5a7df7d5a7449fa3c73a3',
+			"user-key": 'e3a95dd164fdc12b9eb483624161e322',
 			"accept": 'application/json'
 		}
 	})
