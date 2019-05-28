@@ -1,6 +1,8 @@
 # Warp Zone
 
-An application for users to research their next video game of interest along with their current sale prices.
+An application for users to research their next video game of interest along with their current sale prices.  
+
+The 3rd party API provided by IGDB.com has upgraded to V3.0. Please see the new Warp Zone GitHub at <https://github.com/avanichyanukroh/warp-zone-2.0>
 
 ## Motivation
 
